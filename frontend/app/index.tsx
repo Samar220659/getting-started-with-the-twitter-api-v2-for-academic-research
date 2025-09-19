@@ -472,6 +472,14 @@ export default function Index() {
                 <Ionicons name="rocket" size={14} color="#fff" />
                 <Text style={styles.ultimateAutomationButtonText}>Ultimate</Text>
               </TouchableOpacity>
+              
+              <TouchableOpacity
+                style={styles.salesFunnelButton}
+                onPress={() => createCompleteSalesFunnel(lead.id)}
+              >
+                <Ionicons name="trending-up" size={14} color="#fff" />
+                <Text style={styles.salesFunnelButtonText}>Sales Funnel</Text>
+              </TouchableOpacity>
             </View>
           </View>
         ))}
