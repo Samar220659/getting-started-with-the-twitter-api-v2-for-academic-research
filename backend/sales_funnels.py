@@ -421,7 +421,7 @@ class LandingPageBuilder:
                 method: 'POST',
                 headers: {{ 'Content-Type': 'application/json' }},
                 body: JSON.stringify({{
-                    page_id: '{page_id}',
+                    page_id: '{page_data.get('page_id', 'unknown')}',
                     action: action,
                     timestamp: new Date().toISOString()
                 }})
