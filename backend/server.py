@@ -15,6 +15,14 @@ import json
 import base64
 import requests
 from urllib.parse import urlencode
+from integrations import (
+    YouTubeManager, 
+    TikTokBusinessManager, 
+    DigiStore24Manager,
+    SocialMediaAutomation,
+    EmailMarketingManager,
+    WebhookHandler
+)
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
