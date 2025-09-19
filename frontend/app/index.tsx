@@ -456,13 +456,23 @@ export default function Index() {
               <Text style={styles.leadSource}>Quelle: {lead.source}</Text>
               <Text style={styles.leadStatus}>Status: {lead.status}</Text>
             </View>
-            <TouchableOpacity
-              style={styles.automationButton}
-              onPress={() => triggerAutomation(lead.id)}
-            >
-              <Ionicons name="flash" size={16} color="#fff" />
-              <Text style={styles.automationButtonText}>Automatisierung starten</Text>
-            </TouchableOpacity>
+            <View style={styles.leadActions}>
+              <TouchableOpacity
+                style={styles.basicAutomationButton}
+                onPress={() => triggerAutomation(lead.id)}
+              >
+                <Ionicons name="flash" size={14} color="#fff" />
+                <Text style={styles.basicAutomationButtonText}>Basic Auto</Text>
+              </TouchableOpacity>
+              
+              <TouchableOpacity
+                style={styles.ultimateAutomationButton}
+                onPress={() => triggerUltimateAutomation(lead.id)}
+              >
+                <Ionicons name="rocket" size={14} color="#fff" />
+                <Text style={styles.ultimateAutomationButtonText}>Ultimate</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         ))}
       </View>
