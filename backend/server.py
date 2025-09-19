@@ -1461,6 +1461,7 @@ Payment-Link: {stripe_result.get('payment_url', 'wird gesendet')}
 
 Fragen? Einfach antworten! 🤖"""
             
+            whatsapp_manager = WhatsAppBusinessManager()
             whatsapp_result = await whatsapp_manager.send_message(
                 lead['phone'].replace('+', ''), 
                 {'text': whatsapp_message}
