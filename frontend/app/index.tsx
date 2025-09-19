@@ -887,7 +887,7 @@ export default function Index() {
         >
           <Ionicons 
             name="analytics" 
-            size={24} 
+            size={20} 
             color={activeTab === 'dashboard' ? '#4CAF50' : '#999'} 
           />
           <Text style={[styles.tabText, activeTab === 'dashboard' && styles.activeTabText]}>
@@ -901,7 +901,7 @@ export default function Index() {
         >
           <Ionicons 
             name="people" 
-            size={24} 
+            size={20} 
             color={activeTab === 'leads' ? '#4CAF50' : '#999'} 
           />
           <Text style={[styles.tabText, activeTab === 'leads' && styles.activeTabText]}>
@@ -915,11 +915,25 @@ export default function Index() {
         >
           <Ionicons 
             name="create" 
-            size={24} 
+            size={20} 
             color={activeTab === 'content' ? '#4CAF50' : '#999'} 
           />
           <Text style={[styles.tabText, activeTab === 'content' && styles.activeTabText]}>
             Content
+          </Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity
+          style={[styles.tab, activeTab === 'power' && styles.activeTab]}
+          onPress={() => setActiveTab('power')}
+        >
+          <Ionicons 
+            name="rocket" 
+            size={20} 
+            color={activeTab === 'power' ? '#4CAF50' : '#999'} 
+          />
+          <Text style={[styles.tabText, activeTab === 'power' && styles.activeTabText]}>
+            Power
           </Text>
         </TouchableOpacity>
       </View>
