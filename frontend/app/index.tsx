@@ -1573,4 +1573,71 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginLeft: 4,
   },
+  salesFunnelButton: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#9C27B0',
+    padding: 8,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  salesFunnelButtonText: {
+    color: '#fff',
+    fontSize: 10,
+    fontWeight: 'bold',
+    marginLeft: 2,
+  },
+  
+  // Affiliate Section Styles
+  affiliateSection: {
+    backgroundColor: '#1a1a1a',
+    padding: 20,
+    borderRadius: 16,
+    marginBottom: 20,
+  },
+  affiliateStats: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  affiliateStatCard: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: 'rgba(255,255,255,0.1)',
+    padding: 12,
+    borderRadius: 8,
+    marginHorizontal: 4,
+  },
+  affiliateStatValue: {
+    color: '#FFD700',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  affiliateStatLabel: {
+    color: '#ccc',
+    fontSize: 10,
+    textAlign: 'center',
+    marginTop: 4,
+  },
+  affiliateSetupButton: {
+    backgroundColor: '#FFD700',
+    padding: 16,
+    borderRadius: 12,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  affiliateSetupButtonText: {
+    color: '#1a1a1a',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 8,
+  },
+  affiliateSetupButtonSubtext: {
+    color: '#666',
+    fontSize: 12,
+    position: 'absolute',
+    bottom: 4,
+  },
 });
