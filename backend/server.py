@@ -424,7 +424,7 @@ async def trigger_content_recycling(content_id: str, request: ContentRecyclingRe
         scheduled_posts.append(post)
     
     return {
-        "message": f"Content für {len(platforms)} Plattformen geplant",
+        "message": f"Content für {len(request.platforms)} Plattformen geplant",
         "scheduled_posts": scheduled_posts
     }
 
