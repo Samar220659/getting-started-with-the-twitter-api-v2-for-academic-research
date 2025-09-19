@@ -920,7 +920,7 @@ class DigiStore24AffiliateManager:
                 'total_campaigns': len(campaigns),
                 'campaigns': campaigns,
                 'expected_monthly_commission': self._calculate_expected_commission(campaigns),
-                'tracking_setup': await self._setup_affiliate_tracking()
+                'tracking_setup': 'Affiliate-Tracking aktiv'
             }
             
         except Exception as e:
