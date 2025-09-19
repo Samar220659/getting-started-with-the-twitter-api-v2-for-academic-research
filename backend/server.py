@@ -24,6 +24,17 @@ from integrations import (
     WebhookHandler
 )
 
+from power_integrations import (
+    BufferManager,
+    HubSpotManager,
+    MailchimpManager,
+    StripeManager,
+    WhatsAppBusinessManager,
+    TelegramBotManager,
+    ClaudeProManager,
+    ShopifyManager
+)
+
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
