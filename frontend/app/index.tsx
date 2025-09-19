@@ -913,6 +913,36 @@ export default function Index() {
           ))}
         </View>
 
+        {/* Digistore24 Affiliate System */}
+        <View style={styles.affiliateSection}>
+          <Text style={styles.sectionTitle}>💰 DIGISTORE24 AFFILIATE-IMPERIUM</Text>
+          <Text style={styles.sectionSubtitle}>32 Bestandskunden mit personalisierten Kampagnen</Text>
+          
+          <View style={styles.affiliateStats}>
+            <View style={styles.affiliateStatCard}>
+              <Text style={styles.affiliateStatValue}>32</Text>
+              <Text style={styles.affiliateStatLabel}>Bestandskunden</Text>
+            </View>
+            <View style={styles.affiliateStatCard}>
+              <Text style={styles.affiliateStatValue}>€2.847</Text>
+              <Text style={styles.affiliateStatLabel}>Erwartete Provision/Monat</Text>
+            </View>
+            <View style={styles.affiliateStatCard}>
+              <Text style={styles.affiliateStatValue}>samarkande</Text>
+              <Text style={styles.affiliateStatLabel}>Affiliate-ID</Text>
+            </View>
+          </View>
+          
+          <TouchableOpacity 
+            style={styles.affiliateSetupButton}
+            onPress={setupAffiliateForAllCustomers}
+          >
+            <Ionicons name="diamond" size={20} color="#fff" />
+            <Text style={styles.affiliateSetupButtonText}>ALLE KUNDEN AKTIVIEREN</Text>
+            <Text style={styles.affiliateSetupButtonSubtext}>Personalisierte Kampagnen für jeden Kunden</Text>
+          </TouchableOpacity>
+        </View>
+
         {/* Ultimate Automation Button */}
         <TouchableOpacity 
           style={styles.ultimateButton}
