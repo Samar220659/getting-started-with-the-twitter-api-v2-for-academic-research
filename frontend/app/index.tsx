@@ -258,15 +258,94 @@ export default function Index() {
   const triggerAutomation = async (leadId: string) => {
     try {
       setLoading(true);
-      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/automation/lead-to-content/${leadId}`, {
+      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/automation/full-automation/${leadId}`, {
         method: 'POST',
       });
 
       if (response.ok) {
-        Alert.alert('Erfolg', 'Automatisierung wurde gestartet');
+        Alert.alert('🚀 Vollautomatisierung gestartet!', 'Content wird automatisch auf allen Plattformen gepostet, Email-Sequenz läuft 30 Tage und Affiliate-Links generieren passive Einnahmen');
         fetchData();
       } else {
         Alert.alert('Fehler', 'Automatisierung konnte nicht gestartet werden');
+      }
+    } catch (error) {
+      Alert.alert('Fehler', 'Netzwerkfehler');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const setupIntegration = async (service: string) => {
+    try {
+      setLoading(true);
+      let response;
+      
+      switch (service) {
+        case 'youtube':
+          response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/integrations/youtube/setup`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: 'Samar220659@gmail.com',
+              password: '1010DANI'
+            })
+          });
+          break;
+          
+        case 'tiktok':
+          response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/integrations/tiktok/setup`, {
+            method: 'POST',
+          });
+          break;
+          
+        case 'digistore24':
+          response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/integrations/digistore24/setup`, {
+            method: 'POST',
+          });
+          break;
+          
+        default:
+          throw new Error('Unbekannter Service');
+      }
+
+      if (response?.ok) {
+        const result = await response.json();
+        setIntegrations(prev => ({
+          ...prev,
+          [service]: { connected: true, status: 'connected' }
+        }));
+        Alert.alert('✅ Integration erfolgreich!', `${service.toUpperCase()} wurde erfolgreich verbunden und ist bereit für Automatisierung`);
+      } else {
+        Alert.alert('Fehler', `${service.toUpperCase()} Integration fehlgeschlagen`);
+      }
+    } catch (error) {
+      Alert.alert('Fehler', 'Integration konnte nicht eingerichtet werden');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const crossPlatformPost = async (contentId: string) => {
+    try {
+      setLoading(true);
+      const platforms = ['youtube', 'tiktok', 'instagram', 'linkedin', 'facebook'];
+      
+      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/integrations/social/cross-post`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          content_id: contentId,
+          platforms: platforms
+        })
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        Alert.alert('🚀 Cross-Platform Posting erfolgreich!', 
+          `Content wurde auf ${result.successful_posts} von ${platforms.length} Plattformen gepostet`);
+        fetchData();
+      } else {
+        Alert.alert('Fehler', 'Cross-Platform Posting fehlgeschlagen');
       }
     } catch (error) {
       Alert.alert('Fehler', 'Netzwerkfehler');
