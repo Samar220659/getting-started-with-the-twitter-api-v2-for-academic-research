@@ -1469,12 +1469,12 @@ Fragen? Einfach antworten! 🤖"""
             ultimate_results['whatsapp_direct'] = whatsapp_result
         
         # 7. Telegram - Admin Benachrichtigung
-        telegram_notification = f"""🎯 <b>ULTIMATE AUTOMATION TRIGGERED</b>
+        telegram_notification = f"""🎯 ULTIMATE AUTOMATION TRIGGERED
 
-<b>Lead:</b> {lead.get('company', 'Unknown')} ({lead['email']})
-<b>Industry:</b> {lead.get('industry', 'Not specified')}
+Lead: {lead.get('company', 'Unknown')} ({lead['email']})
+Industry: {lead.get('industry', 'Not specified')}
 
-<b>Aktivierte Services:</b>
+Aktivierte Services:
 ✅ HubSpot CRM Sync
 ✅ Claude Pro Content  
 ✅ Buffer 30-Tage Kampagne
@@ -1482,10 +1482,11 @@ Fragen? Einfach antworten! 🤖"""
 ✅ Stripe Payment Link
 ✅ WhatsApp Direct Message
 
-<b>Geschätzte Revenue:</b> €1.500-3.000
+Geschätzte Revenue: €1.500-3.000
 
-<b>System Status:</b> 🟢 VOLL AUTOMATISCH"""
+System Status: 🟢 VOLL AUTOMATISCH"""
         
+        telegram_manager = TelegramBotManager()
         telegram_result = await telegram_manager.send_notification(
             '123456789',  # Admin Chat
             telegram_notification
