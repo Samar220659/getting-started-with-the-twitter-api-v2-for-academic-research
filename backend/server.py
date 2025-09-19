@@ -401,8 +401,11 @@ async def trigger_lead_to_content(lead_id: str):
         "scheduled_posts": scheduled_posts
     }
 
+class ContentRecyclingRequest(BaseModel):
+    platforms: List[str]
+
 @api_router.post("/automation/content-recycling/{content_id}")
-async def trigger_content_recycling(content_id: str, platforms: List[str]):
+async def trigger_content_recycling(content_id: str, request: ContentRecyclingRequest):
     """Content für mehrere Plattformen recyceln"""
     content = await db.content.find_one({"id": content_id})
     if not content:
