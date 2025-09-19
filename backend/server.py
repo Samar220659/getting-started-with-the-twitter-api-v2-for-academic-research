@@ -35,6 +35,13 @@ from power_integrations import (
     ShopifyManager
 )
 
+from sales_funnels import (
+    LandingPageBuilder,
+    VideoFunnelCreator,
+    LeadMagnetGenerator,
+    DigiStore24AffiliateManager
+)
+
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
