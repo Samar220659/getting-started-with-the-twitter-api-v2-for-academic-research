@@ -959,7 +959,7 @@ class DigiStore24AffiliateManager:
             'personalized_landing_page': f'https://zz-lobby.com/{self.affiliate_id}/customer-{customer_index}',
             'tracking_link': f'https://www.digistore24.com/product/automation?aff={self.affiliate_id}&sub={campaign_id}',
             'expected_conversion_rate': self._calculate_customer_conversion_rate(customer_profile),
-            'potential_monthly_commission': self._calculate_customer_commission_potential(customer_profile)
+            'potential_monthly_commission': customer_profile['size'] == 'large' and 500 or 200
         }
     
     async def _match_products_to_customer(self, customer_profile: Dict) -> List[Dict]:
