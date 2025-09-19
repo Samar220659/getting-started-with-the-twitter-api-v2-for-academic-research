@@ -347,7 +347,7 @@ class ZZLobbyBoostTester:
         if "automation_content_id" in self.test_data:
             platforms = ["youtube", "tiktok", "linkedin"]
             result = self.make_request("POST", f"/automation/content-recycling/{self.test_data['automation_content_id']}", 
-                                     {"platforms": platforms})
+                                     platforms)
             if result["success"]:
                 self.log("✅ Content recycling automation successful")
             else:
