@@ -713,6 +713,147 @@ export default function Index() {
     </Modal>
   );
 
+  const triggerUltimateAutomation = async (leadId: string) => {
+    try {
+      setLoading(true);
+      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/power/ultimate-automation/${leadId}`, {
+        method: 'POST',
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        Alert.alert(
+          '🚀 ULTIMATE AUTOMATION GESTARTET!', 
+          `${result.services_activated} Services aktiviert:\n\n` +
+          `• 30-Tage Multi-Platform Kampagne\n` +
+          `• Claude Pro Content-Generierung\n` +
+          `• HubSpot CRM Integration\n` +
+          `• Mailchimp Email-Sequenzen\n` +
+          `• WhatsApp Direct Messages\n` +
+          `• Stripe Payment Processing\n\n` +
+          `Erwarteter ROI: ${result.expected_revenue}`
+        );
+        fetchData();
+      } else {
+        Alert.alert('Fehler', 'Ultimate Automation konnte nicht gestartet werden');
+      }
+    } catch (error) {
+      Alert.alert('Fehler', 'Netzwerkfehler bei Ultimate Automation');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const setupPowerIntegration = async (service: string) => {
+    try {
+      setLoading(true);
+      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/power/${service}/setup`, {
+        method: 'POST',
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        Alert.alert(`✅ ${service.toUpperCase()} Setup erfolgreich!`, result.message || 'Integration wurde erfolgreich eingerichtet');
+        fetchData();
+      } else {
+        Alert.alert('Fehler', `${service.toUpperCase()} Setup fehlgeschlagen`);
+      }
+    } catch (error) {
+      Alert.alert('Fehler', 'Integration Setup fehlgeschlagen');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const renderPowerApps = () => (
+    <ScrollView
+      style={styles.container}
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+    >
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>🚀 POWER INTEGRATIONS</Text>
+        <Text style={styles.sectionSubtitle}>Alle deine Apps arbeiten zusammen</Text>
+
+        {/* Available Power Apps */}
+        <View style={styles.powerAppsGrid}>
+          {[
+            { name: 'Buffer', status: 'active', description: '15€ Abo - 5 Plattformen', color: '#3B82F6' },
+            { name: 'HubSpot', status: 'available', description: 'CRM & Lead Management', color: '#FF6B35' },
+            { name: 'Mailchimp', status: 'available', description: 'Email Marketing', color: '#FFE66D' },
+            { name: 'Claude Pro', status: 'active', description: 'AI Content Creation', color: '#9C27B0' },
+            { name: 'Stripe', status: 'available', description: 'Payment Processing', color: '#00D4AA' },
+            { name: 'WhatsApp', status: 'available', description: 'Business Messaging', color: '#25D366' },
+            { name: 'Telegram', status: 'available', description: 'Notifications & Reports', color: '#0088CC' },
+            { name: 'Shopify', status: 'available', description: 'E-Commerce Store', color: '#96BF48' }
+          ].map((app) => (
+            <TouchableOpacity
+              key={app.name}
+              style={[styles.powerAppCard, { borderLeftColor: app.color }]}
+              onPress={() => setupPowerIntegration(app.name.toLowerCase())}
+            >
+              <View style={styles.powerAppHeader}>
+                <Text style={styles.powerAppName}>{app.name}</Text>
+                <View style={[
+                  styles.powerAppStatus, 
+                  { backgroundColor: app.status === 'active' ? '#4CAF50' : '#FF9800' }
+                ]}>
+                  <Text style={styles.powerAppStatusText}>
+                    {app.status === 'active' ? 'AKTIV' : 'SETUP'}
+                  </Text>
+                </View>
+              </View>
+              <Text style={styles.powerAppDescription}>{app.description}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        {/* Your Accounts Section */}
+        <View style={styles.accountsSection}>
+          <Text style={styles.sectionTitle}>📱 DEINE ACCOUNTS</Text>
+          
+          {[
+            { platform: 'YouTube', account: 'Samar220659@gmail.com', status: 'connected' },
+            { platform: 'TikTok Business', account: 'a22061981@gmx.de', followers: '5.000 Follower', status: 'connected' },
+            { platform: 'Digistore24', account: 'Samar220659@gmail.com', status: 'connected' },
+            { platform: 'Claude Pro', account: 'Pro Account aktiv', status: 'connected' },
+            { platform: 'Buffer', account: '15€/Monat Abo', status: 'active' }
+          ].map((acc) => (
+            <View key={acc.platform} style={styles.accountCard}>
+              <View style={styles.accountInfo}>
+                <Text style={styles.accountPlatform}>{acc.platform}</Text>
+                <Text style={styles.accountDetails}>{acc.account}</Text>
+                {acc.followers && <Text style={styles.accountFollowers}>{acc.followers}</Text>}
+              </View>
+              <View style={[
+                styles.accountStatus,
+                { backgroundColor: acc.status === 'active' || acc.status === 'connected' ? '#4CAF50' : '#FF9800' }
+              ]}>
+                <Text style={styles.accountStatusText}>
+                  {acc.status === 'active' ? '🔥' : '✅'}
+                </Text>
+              </View>
+            </View>
+          ))}
+        </View>
+
+        {/* Ultimate Automation Button */}
+        <TouchableOpacity 
+          style={styles.ultimateButton}
+          onPress={() => {
+            if (leads.length > 0) {
+              triggerUltimateAutomation(leads[0].id);
+            } else {
+              Alert.alert('Info', 'Erstelle zuerst einen Lead für die Ultimate Automation');
+            }
+          }}
+        >
+          <Text style={styles.ultimateButtonText}>🚀 ULTIMATE AUTOMATION STARTEN</Text>
+          <Text style={styles.ultimateButtonSubtext}>Alle Apps + KI arbeiten zusammen</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+  );
+
   const renderTabContent = () => {
     switch (activeTab) {
       case 'dashboard':
@@ -721,6 +862,8 @@ export default function Index() {
         return renderLeads();
       case 'content':
         return renderContent();
+      case 'power':
+        return renderPowerApps();
       default:
         return renderDashboard();
     }
