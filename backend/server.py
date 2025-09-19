@@ -414,7 +414,7 @@ async def trigger_content_recycling(content_id: str, request: ContentRecyclingRe
     scheduled_posts = []
     base_time = datetime.utcnow()
     
-    for i, platform in enumerate(platforms):
+    for i, platform in enumerate(request.platforms):
         post_request = SocialPostCreate(
             platform=platform,
             content_id=content_id,
