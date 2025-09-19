@@ -42,6 +42,8 @@ from sales_funnels import (
     DigiStore24AffiliateManager
 )
 
+from self_healing_system import SelfHealingSystem
+
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
