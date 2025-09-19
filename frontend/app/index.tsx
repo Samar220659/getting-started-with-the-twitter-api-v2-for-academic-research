@@ -67,6 +67,14 @@ export default function Index() {
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   
+  // Integration states
+  const [integrations, setIntegrations] = useState({
+    youtube: { connected: false, status: 'disconnected' },
+    tiktok: { connected: false, status: 'disconnected' },
+    digistore24: { connected: false, status: 'disconnected' },
+    email: { connected: true, status: 'active' }  // Always active
+  });
+  
   // Modal states
   const [showWorkflowModal, setShowWorkflowModal] = useState(false);
   const [showLeadModal, setShowLeadModal] = useState(false);
