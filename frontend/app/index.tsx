@@ -1440,4 +1440,40 @@ const styles = StyleSheet.create({
     marginTop: 4,
     opacity: 0.9,
   },
+  
+  // Lead Actions
+  leadActions: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  basicAutomationButton: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#FF9800',
+    padding: 8,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  basicAutomationButtonText: {
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: 'bold',
+    marginLeft: 4,
+  },
+  ultimateAutomationButton: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#4CAF50',
+    padding: 8,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  ultimateAutomationButtonText: {
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: 'bold',
+    marginLeft: 4,
+  },
 });
