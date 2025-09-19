@@ -354,6 +354,65 @@ export default function Index() {
     }
   };
 
+  const createCompleteSalesFunnel = async (leadId: string) => {
+    try {
+      setLoading(true);
+      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/sales/complete-funnel/${leadId}`, {
+        method: 'POST',
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        Alert.alert(
+          '🎯 SALES-FUNNEL ERSTELLT!', 
+          `Kompletter Marketing-Funnel für Lead aktiviert:\n\n` +
+          `• Hochkonvertierende Landing Page\n` +
+          `• Viraler Video-Funnel\n` +
+          `• eBook Lead-Magnet\n` +
+          `• Stripe Payment Processing\n\n` +
+          `Erwartete Revenue: ${result.potential_revenue}\n` +
+          `Funnel bereit für Traffic! 🚀`
+        );
+        fetchData();
+      } else {
+        Alert.alert('Fehler', 'Sales-Funnel Erstellung fehlgeschlagen');
+      }
+    } catch (error) {
+      Alert.alert('Fehler', 'Netzwerkfehler bei Sales-Funnel');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const setupAffiliateForAllCustomers = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/sales/affiliate/setup-campaigns`, {
+        method: 'POST',
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        Alert.alert(
+          '💰 AFFILIATE-IMPERIUM AKTIVIERT!', 
+          `Alle 32 Bestandskunden mit personalisierten Kampagnen ausgestattet:\n\n` +
+          `• ${result.total_campaigns} individuelle Kampagnen\n` +
+          `• Personalisierte Landing Pages\n` +
+          `• Branchenspezifische Marketing-Materialien\n` +
+          `• Erwartete Provision: €${result.expected_monthly_commission}/Monat\n\n` +
+          `Affiliate-ID: ${result.affiliate_id} (samarkande)`
+        );
+        fetchData();
+      } else {
+        Alert.alert('Fehler', 'Affiliate Setup fehlgeschlagen');
+      }
+    } catch (error) {
+      Alert.alert('Fehler', 'Netzwerkfehler bei Affiliate Setup');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const renderDashboard = () => (
     <ScrollView
       style={styles.container}
