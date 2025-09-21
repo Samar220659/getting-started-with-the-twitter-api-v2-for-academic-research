@@ -155,7 +155,7 @@ async def get_dashboard_stats():
         avg_conversion = (leads_with_emails / total_leads * 100) if total_leads > 0 else 0
         
         # Get recent searches
-        recent_searches_cursor = db.searches.find().sort("created_at", -1).limit(5)
+        recent_searches_cursor = db.searches.find({}, {"_id": 0}).sort("created_at", -1).limit(5)
         recent_searches = await recent_searches_cursor.to_list(5)
         
         # Format recent searches for frontend
