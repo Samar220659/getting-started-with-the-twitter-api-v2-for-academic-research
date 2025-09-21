@@ -3,9 +3,9 @@ from typing import List
 import uuid
 from datetime import datetime
 
-from ..models.leads import SearchRequest, LeadResult, SearchRecord, EmailEnrichmentRequest, DashboardStats
-from ..services.lead_scraper import MockLeadScraperService, MockEmailEnrichmentService
-from ..server import db
+from models.leads import SearchRequest, LeadResult, SearchRecord, EmailEnrichmentRequest, DashboardStats
+from services.lead_scraper import MockLeadScraperService, MockEmailEnrichmentService
+from server import db
 
 router = APIRouter(prefix="/api/leads", tags=["leads"])
 
