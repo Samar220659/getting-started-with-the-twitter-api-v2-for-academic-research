@@ -2,8 +2,9 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
-import Blog from "./components/Blog";
-import About from "./components/About";
+import Dashboard from "./components/Dashboard";
+import LeadScraper from "./components/LeadScraper";
+import Results from "./components/Results";
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/about-me" element={<About />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/scraper" element={<LeadScraper />} />
+          <Route path="/results" element={<Results />} />
         </Routes>
       </BrowserRouter>
     </div>
