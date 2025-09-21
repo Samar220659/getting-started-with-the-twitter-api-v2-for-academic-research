@@ -50,8 +50,8 @@ const Dashboard = () => {
         setRecentSearches(response.data.recentSearches || []);
       }
     } catch (error) {
-      console.error('Failed to fetch dashboard stats:', error);
-      // Fallback to mock data
+      console.error('Dashboard-Stats konnten nicht abgerufen werden:', error);
+      // Fallback zu Mock-Daten
       setStats({
         totalLeads: 2847,
         totalSearches: 156,
@@ -61,16 +61,16 @@ const Dashboard = () => {
       setRecentSearches([
         {
           id: 1,
-          query: "restaurants in New York, NY",
+          query: "restaurants in München, BY",
           results: 20,
-          date: "2 hours ago",
+          date: "vor 2 Stunden",
           avgRating: 4.3
         },
         {
           id: 2, 
-          query: "plumbers in Austin, TX",
+          query: "klempner in Berlin, BE",
           results: 15,
-          date: "1 day ago",
+          date: "vor 1 Tag",
           avgRating: 4.1
         }
       ]);
@@ -81,20 +81,20 @@ const Dashboard = () => {
 
   const topPerformingSearches = [
     {
-      query: "Italian restaurants",
-      location: "NYC",
+      query: "Italienische Restaurants",
+      location: "München",
       leads: 45,
       emailRate: 78
     },
     {
-      query: "Auto repair shops", 
-      location: "Chicago",
+      query: "Autowerkstätten", 
+      location: "Berlin",
       leads: 32,
       emailRate: 65
     },
     {
-      query: "Dental clinics",
-      location: "Miami", 
+      query: "Zahnarztpraxen",
+      location: "Hamburg", 
       leads: 28,
       emailRate: 82
     }
@@ -113,11 +113,11 @@ const Dashboard = () => {
           </Link>
           <nav className="flex gap-4">
             <Button variant="outline" onClick={() => navigate('/results')}>
-              View Results
+              Ergebnisse anzeigen
             </Button>
             <Button onClick={() => navigate('/scraper')} className="bg-blue-600 hover:bg-blue-700">
               <Plus className="w-4 h-4 mr-2" />
-              New Search
+              Neue Suche
             </Button>
           </nav>
         </div>
@@ -127,10 +127,10 @@ const Dashboard = () => {
         {/* Header Section */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Lead Generation Dashboard
+            Lead-Generierungs-Dashboard
           </h1>
           <p className="text-gray-600">
-            Track your Google Maps scraping performance and manage your leads
+            Verfolgen Sie Ihre Google Maps Scraping-Performance und verwalten Sie Ihre Leads
           </p>
         </div>
 
@@ -138,7 +138,7 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <Card className="hover:shadow-md transition-shadow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Leads</CardTitle>
+              <CardTitle className="text-sm font-medium">Gesamt-Leads</CardTitle>
               <Database className="h-4 w-4 text-blue-600" />
             </CardHeader>
             <CardContent>
@@ -146,7 +146,7 @@ const Dashboard = () => {
               <p className="text-xs text-muted-foreground">
                 <span className="text-green-600 flex items-center gap-1">
                   <ArrowUpRight className="w-3 h-3" />
-                  +12% from last month
+                  +12% vom letzten Monat
                 </span>
               </p>
             </CardContent>
@@ -154,7 +154,7 @@ const Dashboard = () => {
 
           <Card className="hover:shadow-md transition-shadow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Searches</CardTitle>
+              <CardTitle className="text-sm font-medium">Suchen</CardTitle>
               <Search className="h-4 w-4 text-green-600" />
             </CardHeader>
             <CardContent>
@@ -162,7 +162,7 @@ const Dashboard = () => {
               <p className="text-xs text-muted-foreground">
                 <span className="text-green-600 flex items-center gap-1">
                   <ArrowUpRight className="w-3 h-3" />
-                  +8% from last month
+                  +8% vom letzten Monat
                 </span>
               </p>
             </CardContent>
@@ -170,7 +170,7 @@ const Dashboard = () => {
 
           <Card className="hover:shadow-md transition-shadow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Conversion Rate</CardTitle>
+              <CardTitle className="text-sm font-medium">Conversion-Rate</CardTitle>
               <TrendingUp className="h-4 w-4 text-purple-600" />
             </CardHeader>
             <CardContent>
@@ -178,7 +178,7 @@ const Dashboard = () => {
               <p className="text-xs text-muted-foreground">
                 <span className="text-green-600 flex items-center gap-1">
                   <ArrowUpRight className="w-3 h-3" />
-                  +2.1% from last month
+                  +2,1% vom letzten Monat
                 </span>
               </p>
             </CardContent>
@@ -186,7 +186,7 @@ const Dashboard = () => {
 
           <Card className="hover:shadow-md transition-shadow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Emails Found</CardTitle>
+              <CardTitle className="text-sm font-medium">E-Mails gefunden</CardTitle>
               <Users className="h-4 w-4 text-orange-600" />
             </CardHeader>
             <CardContent>
@@ -194,7 +194,7 @@ const Dashboard = () => {
               <p className="text-xs text-muted-foreground">
                 <span className="text-green-600 flex items-center gap-1">
                   <ArrowUpRight className="w-3 h-3" />
-                  +18% from last month
+                  +18% vom letzten Monat
                 </span>
               </p>
             </CardContent>
@@ -203,23 +203,23 @@ const Dashboard = () => {
 
         <Tabs defaultValue="recent" className="w-full">
           <TabsList className="grid w-full grid-cols-3 max-w-md">
-            <TabsTrigger value="recent">Recent Searches</TabsTrigger>
-            <TabsTrigger value="top">Top Performing</TabsTrigger>
-            <TabsTrigger value="demo">Demo Data</TabsTrigger>
+            <TabsTrigger value="recent">Letzte Suchen</TabsTrigger>
+            <TabsTrigger value="top">Top Performance</TabsTrigger>
+            <TabsTrigger value="demo">Demo-Daten</TabsTrigger>
           </TabsList>
           
           <TabsContent value="recent" className="space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
-                  Recent Lead Searches
+                  Aktuelle Lead-Suchen
                   <Button size="sm" onClick={() => navigate('/scraper')}>
                     <Plus className="w-4 h-4 mr-1" />
-                    New Search
+                    Neue Suche
                   </Button>
                 </CardTitle>
                 <CardDescription>
-                  Your latest Google Maps scraping activities
+                  Ihre neuesten Google Maps Scraping-Aktivitäten
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -235,11 +235,11 @@ const Dashboard = () => {
                           <div className="flex items-center gap-4 text-sm text-gray-500">
                             <span className="flex items-center gap-1">
                               <Database className="w-3 h-3" />
-                              {search.results} results
+                              {search.results} Ergebnisse
                             </span>
                             <span className="flex items-center gap-1">
                               <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                              {search.avgRating} avg
+                              {search.avgRating} Ø
                             </span>
                             <span className="flex items-center gap-1">
                               <Clock className="w-3 h-3" />
@@ -249,7 +249,7 @@ const Dashboard = () => {
                         </div>
                       </div>
                       <Button size="sm" variant="outline">
-                        View Results
+                        Ergebnisse anzeigen
                       </Button>
                     </div>
                   ))}
@@ -261,9 +261,9 @@ const Dashboard = () => {
           <TabsContent value="top" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Top Performing Searches</CardTitle>
+                <CardTitle>Top-Performance Suchen</CardTitle>
                 <CardDescription>
-                  Searches with the highest lead quality and email discovery rates
+                  Suchen mit der höchsten Lead-Qualität und E-Mail-Entdeckungsrate
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -286,7 +286,7 @@ const Dashboard = () => {
                         </div>
                         <div className="text-center">
                           <div className="font-semibold text-green-600">{search.emailRate}%</div>
-                          <div className="text-gray-500">Email Rate</div>
+                          <div className="text-gray-500">E-Mail-Rate</div>
                         </div>
                       </div>
                     </div>
@@ -300,19 +300,19 @@ const Dashboard = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
-                  Demo Search Results
+                  Demo-Suchergebnisse
                   <div className="flex gap-2">
                     <Button size="sm" variant="outline" onClick={() => navigate('/results')}>
-                      View Full Results
+                      Vollständige Ergebnisse anzeigen
                     </Button>
                     <Button size="sm" className="bg-green-600 hover:bg-green-700">
                       <Download className="w-4 h-4 mr-1" />
-                      Export CSV
+                      CSV exportieren
                     </Button>
                   </div>
                 </CardTitle>
                 <CardDescription>
-                  Sample data showing restaurants in New York, NY - {mockScrapeResults.length} results found
+                  Beispieldaten zeigen Restaurants in München - {mockScrapeResults.length} Ergebnisse gefunden
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -337,8 +337,8 @@ const Dashboard = () => {
                         </div>
                       </div>
                       <div className="flex items-center gap-2 text-xs">
-                        {result.phone && <Badge variant="outline" className="text-green-600">Phone</Badge>}
-                        {result.email && <Badge variant="outline" className="text-purple-600">Email</Badge>}
+                        {result.phone && <Badge variant="outline" className="text-green-600">Telefon</Badge>}
+                        {result.email && <Badge variant="outline" className="text-purple-600">E-Mail</Badge>}
                         {result.website && <Badge variant="outline" className="text-blue-600">Website</Badge>}
                       </div>
                     </div>
@@ -346,7 +346,7 @@ const Dashboard = () => {
                   
                   <div className="pt-4 text-center">
                     <Button onClick={() => navigate('/results')} className="bg-blue-600 hover:bg-blue-700">
-                      View All {mockScrapeResults.length} Results
+                      Alle {mockScrapeResults.length} Ergebnisse anzeigen
                     </Button>
                   </div>
                 </div>
@@ -359,19 +359,19 @@ const Dashboard = () => {
         <div className="mt-8">
           <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
             <CardHeader>
-              <CardTitle className="text-blue-800">Ready to Find More Leads?</CardTitle>
+              <CardTitle className="text-blue-800">Bereit für weitere Leads?</CardTitle>
               <CardDescription className="text-blue-600">
-                Start a new Google Maps search and discover potential customers in seconds
+                Starten Sie eine neue Google Maps-Suche und entdecken Sie potenzielle Kunden in Sekunden
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button onClick={() => navigate('/scraper')} className="bg-blue-600 hover:bg-blue-700">
                   <Search className="w-4 h-4 mr-2" />
-                  Start New Search
+                  Neue Suche starten
                 </Button>
                 <Button variant="outline" onClick={() => navigate('/results')}>
-                  View Demo Results
+                  Demo-Ergebnisse anzeigen
                 </Button>
               </div>
             </CardContent>

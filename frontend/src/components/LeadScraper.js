@@ -43,21 +43,21 @@ const LeadScraper = () => {
         // Navigate to results
         navigate('/results');
       } else {
-        alert('No results found. Please try a different search.');
+        alert('Keine Ergebnisse gefunden. Bitte versuchen Sie eine andere Suche.');
       }
     } catch (error) {
-      console.error('Scraping error:', error);
-      alert('Search failed. Please try again or contact support.');
+      console.error('Scraping-Fehler:', error);
+      alert('Suche fehlgeschlagen. Bitte versuchen Sie es erneut oder kontaktieren Sie den Support.');
     } finally {
       setIsLoading(false);
     }
   };
 
   const exampleSearches = [
-    { query: "restaurants", city: "New York", state: "NY" },
-    { query: "plumbers", city: "Austin", state: "TX" },
-    { query: "hair salons", city: "Los Angeles", state: "CA" },
-    { query: "gyms", city: "Miami", state: "FL" }
+    { query: "restaurants", city: "München", state: "BY" },
+    { query: "klempner", city: "Berlin", state: "BE" },
+    { query: "friseursalons", city: "Hamburg", state: "HH" },
+    { query: "fitnessstudios", city: "Köln", state: "NW" }
   ];
 
   return (
@@ -73,7 +73,7 @@ const LeadScraper = () => {
           </Link>
           <nav className="flex gap-4">
             <Button variant="outline" asChild>
-              <Link to="/dashboard">View Results</Link>
+              <Link to="/dashboard">Ergebnisse anzeigen</Link>
             </Button>
           </nav>
         </div>
@@ -84,14 +84,14 @@ const LeadScraper = () => {
         <div className="text-center mb-12">
           <Badge className="mb-4 bg-blue-100 text-blue-700 border-blue-200">
             <Zap className="w-4 h-4 mr-1" />
-            Export Button Theory in Action
+            Export-Button-Theorie in Aktion
           </Badge>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Google Maps Lead Scraper
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Instead of manually copying data from Google Maps, let our automation do the work. 
-            Get business details, contact info, and ratings in seconds.
+            Anstatt Daten manuell von Google Maps zu kopieren, lassen Sie unsere Automatisierung die Arbeit machen. 
+            Erhalten Sie Unternehmensdetails, Kontaktinformationen und Bewertungen in Sekunden.
           </p>
         </div>
 
@@ -102,22 +102,22 @@ const LeadScraper = () => {
               <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-t-lg">
                 <CardTitle className="flex items-center gap-2">
                   <MapPin className="w-5 h-5" />
-                  Lead Scraping Parameters
+                  Lead-Scraping-Parameter
                 </CardTitle>
                 <CardDescription className="text-blue-100">
-                  Configure your search to find the exact businesses you need
+                  Konfigurieren Sie Ihre Suche, um genau die Unternehmen zu finden, die Sie benötigen
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-6">
                 <form onSubmit={handleScrape} className="space-y-6">
                   <div className="space-y-2">
                     <Label htmlFor="query" className="text-sm font-medium">
-                      What are you looking for? *
+                      Wonach suchen Sie? *
                     </Label>
                     <Input
                       id="query"
                       name="query"
-                      placeholder="e.g., restaurants, plumbers, gyms, hair salons"
+                      placeholder="z.B. restaurants, klempner, fitnessstudios, friseursalons"
                       value={searchData.query}
                       onChange={(e) => handleInputChange('query', e.target.value)}
                       required
@@ -125,17 +125,17 @@ const LeadScraper = () => {
                       autoComplete="off"
                     />
                     <p className="text-sm text-gray-500">
-                      Be specific for better results (e.g., "Italian restaurants" vs "restaurants")
+                      Seien Sie spezifisch für bessere Ergebnisse (z.B. "italienische Restaurants" statt "Restaurants")
                     </p>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="city">City *</Label>
+                      <Label htmlFor="city">Stadt *</Label>
                       <Input
                         id="city"
                         name="city"
-                        placeholder="New York"
+                        placeholder="München"
                         value={searchData.city}
                         onChange={(e) => handleInputChange('city', e.target.value)}
                         required
@@ -143,11 +143,11 @@ const LeadScraper = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="state">State *</Label>
+                      <Label htmlFor="state">Bundesland *</Label>
                       <Input
                         id="state"
                         name="state"
-                        placeholder="NY"
+                        placeholder="BY"
                         value={searchData.state}
                         onChange={(e) => handleInputChange('state', e.target.value)}
                         required
@@ -158,18 +158,18 @@ const LeadScraper = () => {
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="zipCode">Zip Code (Optional)</Label>
+                      <Label htmlFor="zipCode">Postleitzahl (Optional)</Label>
                       <Input
                         id="zipCode"
                         name="zipCode"
-                        placeholder="10001"
+                        placeholder="80331"
                         value={searchData.zipCode}
                         onChange={(e) => handleInputChange('zipCode', e.target.value)}
                         autoComplete="off"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="maxResults">Maximum Results</Label>
+                      <Label htmlFor="maxResults">Maximale Ergebnisse</Label>
                       <Select
                         value={searchData.maxResults.toString()}
                         onValueChange={(value) => handleInputChange('maxResults', parseInt(value))}
@@ -178,10 +178,10 @@ const LeadScraper = () => {
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="10">10 results</SelectItem>
-                          <SelectItem value="20">20 results</SelectItem>
-                          <SelectItem value="50">50 results</SelectItem>
-                          <SelectItem value="100">100 results</SelectItem>
+                          <SelectItem value="10">10 Ergebnisse</SelectItem>
+                          <SelectItem value="20">20 Ergebnisse</SelectItem>
+                          <SelectItem value="50">50 Ergebnisse</SelectItem>
+                          <SelectItem value="100">100 Ergebnisse</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -195,12 +195,12 @@ const LeadScraper = () => {
                     {isLoading ? (
                       <>
                         <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                        Scraping Google Maps...
+                        Google Maps wird gescannt...
                       </>
                     ) : (
                       <>
                         <Search className="w-5 h-5 mr-2" />
-                        Start Scraping Leads
+                        Lead-Scraping starten
                       </>
                     )}
                   </Button>
@@ -214,28 +214,28 @@ const LeadScraper = () => {
             {/* What You'll Get */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">What You'll Get</CardTitle>
+                <CardTitle className="text-lg">Was Sie erhalten</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-center gap-3 text-sm">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Business names & addresses</span>
+                  <span>Firmennamen & Adressen</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Phone numbers & websites</span>
+                  <span>Telefonnummern & Websites</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Star ratings & review counts</span>
+                  <span>Sterne-Bewertungen & Anzahl Rezensionen</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Email addresses (when available)</span>
+                  <span>E-Mail-Adressen (falls verfügbar)</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Exportable CSV format</span>
+                  <span>Exportierbares CSV-Format</span>
                 </div>
               </CardContent>
             </Card>
@@ -243,9 +243,9 @@ const LeadScraper = () => {
             {/* Example Searches */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Popular Searches</CardTitle>
+                <CardTitle className="text-lg">Beliebte Suchen</CardTitle>
                 <CardDescription>
-                  Try these example searches to get started
+                  Probieren Sie diese Beispielsuchen aus, um zu starten
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
@@ -275,14 +275,14 @@ const LeadScraper = () => {
             {/* Pricing Info */}
             <Card className="border-blue-200 bg-blue-50">
               <CardHeader>
-                <CardTitle className="text-lg text-blue-800">Free to Try</CardTitle>
+                <CardTitle className="text-lg text-blue-800">Kostenlos testen</CardTitle>
               </CardHeader>
               <CardContent className="text-sm text-blue-700">
                 <p className="mb-3">
-                  This demo uses mock data to show you exactly how the system works.
+                  Diese Demo verwendet Mock-Daten, um Ihnen genau zu zeigen, wie das System funktioniert.
                 </p>
                 <p>
-                  In production, each search costs approximately $0.02-0.10 depending on results.
+                  In der Produktion kostet jede Suche etwa 0,02-0,10€, abhängig von den Ergebnissen.
                 </p>
               </CardContent>
             </Card>

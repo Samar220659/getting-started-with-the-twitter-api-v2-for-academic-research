@@ -16,7 +16,7 @@ const Homepage = () => {
 
   const handleEmailSubmit = (e) => {
     e.preventDefault();
-    alert("Thanks for subscribing! You'll get updates on new automation templates.");
+    alert("Danke für die Anmeldung! Sie erhalten Updates zu neuen Automatisierungsvorlagen.");
     setEmail("");
   };
 
@@ -24,30 +24,30 @@ const Homepage = () => {
     {
       icon: <MapPin className="w-8 h-8 text-blue-600" />,
       title: "Google Maps Scraping",
-      description: "Extract local business data from Google Maps automatically with precise location targeting."
+      description: "Extrahieren Sie automatisch lokale Unternehmensdaten von Google Maps mit präziser Standortzielgruppenadressierung."
     },
     {
       icon: <Database className="w-8 h-8 text-green-600" />,
-      title: "Automated Data Collection",
-      description: "Gather business names, addresses, phone numbers, websites, and ratings in seconds."
+      title: "Automatisierte Datensammlung",
+      description: "Sammeln Sie Firmennamen, Adressen, Telefonnummern, Websites und Bewertungen in Sekunden."
     },
     {
       icon: <Mail className="w-8 h-8 text-purple-600" />,
-      title: "Email Enrichment", 
-      description: "Automatically find missing email addresses using advanced contact discovery algorithms."
+      title: "E-Mail-Anreicherung", 
+      description: "Finden Sie automatisch fehlende E-Mail-Adressen mit fortschrittlichen Kontaktentdeckungsalgorithmen."
     },
     {
       icon: <Zap className="w-8 h-8 text-yellow-600" />,
-      title: "Export Button Theory",
-      description: "Turn manual data exports into automated workflows that save hours of repetitive work."
+      title: "Export-Button-Theorie",
+      description: "Verwandeln Sie manuelle Datenexporte in automatisierte Workflows, die stundenlange Wiederholungsarbeit sparen."
     }
   ];
 
   const useCases = [
-    "Marketing Agencies - Generate leads for local businesses",
-    "Sales Teams - Build prospect lists for outreach campaigns", 
-    "Entrepreneurs - Research competitors and market opportunities",
-    "Freelancers - Find potential clients in target industries"
+    "Marketing-Agenturen - Generieren Sie Leads für lokale Unternehmen",
+    "Vertriebsteams - Erstellen Sie Prospect-Listen für Outreach-Kampagnen", 
+    "Unternehmer - Recherchieren Sie Konkurrenten und Marktmöglichkeiten",
+    "Freiberufler - Finden Sie potenzielle Kunden in Zielbranchen"
   ];
 
   return (
@@ -69,7 +69,7 @@ const Homepage = () => {
               Scraper
             </Link>
             <Button onClick={handleGetStarted} className="bg-blue-600 hover:bg-blue-700">
-              Get Started
+              Jetzt starten
             </Button>
           </nav>
         </div>
@@ -79,18 +79,18 @@ const Homepage = () => {
       <main className="max-w-7xl mx-auto px-6 py-16">
         <div className="text-center mb-16">
           <Badge className="mb-6 bg-blue-100 text-blue-700 border-blue-200">
-            🚀 Based on Greg Isenberg's Export Button Theory
+            🚀 Basierend auf Greg Isenbergs Export-Button-Theorie
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Turn Google Maps Into Your
+            Verwandeln Sie Google Maps in Ihr
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              {" "}Lead Generation{" "}
+              {" "}Lead-Generierungs{" "}
             </span>
-            Powerhouse
+            Kraftwerk
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Stop manually copying business information from Google Maps. Our AI-powered automation 
-            extracts leads with phone numbers, emails, ratings, and contact details in seconds.
+            Hören Sie auf, Unternehmensinformationen manuell von Google Maps zu kopieren. Unsere KI-gestützte Automatisierung 
+            extrahiert Leads mit Telefonnummern, E-Mails, Bewertungen und Kontaktdaten in Sekunden.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
@@ -98,7 +98,7 @@ const Homepage = () => {
               onClick={handleGetStarted}
               className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3"
             >
-              Start Scraping Leads
+              Leads scrapen starten
             </Button>
             <Button 
               size="lg" 
@@ -106,7 +106,7 @@ const Homepage = () => {
               onClick={() => navigate("/dashboard")}
               className="text-lg px-8 py-3"
             >
-              View Demo Results
+              Demo-Ergebnisse anzeigen
             </Button>
           </div>
         </div>
@@ -114,10 +114,10 @@ const Homepage = () => {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
           {[
-            { number: "10,000+", label: "Leads Generated" },
-            { number: "500+", label: "Happy Users" }, 
-            { number: "95%", label: "Data Accuracy" },
-            { number: "30s", label: "Average Scrape Time" }
+            { number: "10.000+", label: "Generierte Leads" },
+            { number: "500+", label: "Zufriedene Nutzer" }, 
+            { number: "95%", label: "Datengenauigkeit" },
+            { number: "30s", label: "Durchschnittliche Scrape-Zeit" }
           ].map((stat, index) => (
             <div key={index} className="text-center">
               <div className="text-3xl font-bold text-blue-600">{stat.number}</div>
@@ -129,7 +129,7 @@ const Homepage = () => {
         {/* Features */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
-            Powerful Lead Generation Features
+            Kraftvolle Lead-Generierungs-Features
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
@@ -153,26 +153,26 @@ const Homepage = () => {
         {/* How It Works */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
-            How It Works - The Export Button Theory in Action
+            So funktioniert es - Die Export-Button-Theorie in Aktion
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 step: "1",
-                title: "Enter Your Search",
-                description: "Type what you're looking for (e.g., 'restaurants in NYC') and set your parameters.",
+                title: "Suchparameter eingeben",
+                description: "Geben Sie ein, wonach Sie suchen (z.B. 'Restaurants in München') und legen Sie Ihre Parameter fest.",
                 icon: <Search className="w-6 h-6" />
               },
               {
                 step: "2", 
-                title: "AI Scrapes Google Maps",
-                description: "Our automation finds businesses, extracts contact info, ratings, and reviews automatically.",
+                title: "KI scant Google Maps",
+                description: "Unsere Automatisierung findet Unternehmen und extrahiert automatisch Kontaktinformationen, Bewertungen und Rezensionen.",
                 icon: <Zap className="w-6 h-6" />
               },
               {
                 step: "3",
-                title: "Export Clean Data",
-                description: "Get organized spreadsheet with names, phones, emails, addresses ready for outreach.",
+                title: "Saubere Daten exportieren",
+                description: "Erhalten Sie eine organisierte Tabellenkalkulation mit Namen, Telefonnummern, E-Mails und Adressen für Ihre Kampagnen.",
                 icon: <Database className="w-6 h-6" />
               }
             ].map((step, index) => (
@@ -190,7 +190,7 @@ const Homepage = () => {
         {/* Use Cases */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
-            Perfect For These Use Cases
+            Perfekt für diese Anwendungsfälle
           </h2>
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {useCases.map((useCase, index) => (
@@ -206,23 +206,23 @@ const Homepage = () => {
         <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-gray-900 mb-3">
-              Get More Automation Blueprints
+              Weitere Automatisierungs-Blueprints erhalten
             </h3>
             <p className="text-gray-600">
-              Join 5,000+ entrepreneurs getting weekly automation ideas and templates based on the Export Button Theory.
+              Schließen Sie sich 5.000+ Unternehmern an, die wöchentliche Automatisierungsideen und Vorlagen basierend auf der Export-Button-Theorie erhalten.
             </p>
           </div>
           <form onSubmit={handleEmailSubmit} className="flex gap-3 max-w-md mx-auto">
             <Input
               type="email"
-              placeholder="Enter your email"
+              placeholder="E-Mail-Adresse eingeben"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="flex-1"
               required
             />
             <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
-              Subscribe
+              Abonnieren
             </Button>
           </form>
         </div>
@@ -238,7 +238,7 @@ const Homepage = () => {
             <span className="text-xl font-bold">LeadMaps</span>
           </div>
           <p className="text-gray-400 mb-6">
-            Automated lead generation powered by the Export Button Theory
+            Automatisierte Lead-Generierung basierend auf der Export-Button-Theorie
           </p>
           <div className="flex justify-center gap-6">
             <Link to="/dashboard" className="text-gray-400 hover:text-white transition-colors">
