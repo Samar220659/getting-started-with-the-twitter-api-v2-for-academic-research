@@ -1,14 +1,14 @@
 {
-  "total": 23,
-  "passed": 13,
-  "failed": 10,
-  "success_rate": 56.52173913043478,
+  "total": 25,
+  "passed": 24,
+  "failed": 1,
+  "success_rate": 96.0,
   "results": [
     {
       "test": "Root Endpoint",
       "status": "PASS",
       "message": "Root endpoint returns correct message",
-      "timestamp": "2025-09-21T21:16:56.855738",
+      "timestamp": "2025-09-21T21:19:35.998296",
       "response_data": {
         "message": "Hello World"
       }
@@ -17,27 +17,27 @@
       "test": "Create Status Check",
       "status": "PASS",
       "message": "Status check created successfully",
-      "timestamp": "2025-09-21T21:16:56.916538",
+      "timestamp": "2025-09-21T21:19:36.056002",
       "response_data": {
-        "id": "da16a928-4de2-4ef1-89a8-ae0f0c571701",
+        "id": "9c81780f-6a89-4d9a-a5c5-c7fa5d94a7e5",
         "client_name": "LeadMaps Test Client",
-        "timestamp": "2025-09-21T21:16:56.908008"
+        "timestamp": "2025-09-21T21:19:36.050323"
       }
     },
     {
       "test": "Get Status Checks",
       "status": "PASS",
-      "message": "Retrieved 3 status checks",
-      "timestamp": "2025-09-21T21:16:56.976202",
+      "message": "Retrieved 5 status checks",
+      "timestamp": "2025-09-21T21:19:36.111943",
       "response_data": {
-        "count": 3
+        "count": 5
       }
     },
     {
       "test": "Status Check Structure",
       "status": "PASS",
       "message": "Status check structure is valid",
-      "timestamp": "2025-09-21T21:16:56.976260",
+      "timestamp": "2025-09-21T21:19:36.111997",
       "response_data": {
         "id": "2d33e3f4-4847-46b8-a5ba-69e01fc6b074",
         "client_name": "LeadMaps Test Client",
@@ -48,7 +48,7 @@
       "test": "CORS Configuration",
       "status": "FAIL",
       "message": "CORS headers missing",
-      "timestamp": "2025-09-21T21:16:57.040217",
+      "timestamp": "2025-09-21T21:19:36.162760",
       "response_data": {
         "Access-Control-Allow-Origin": null,
         "Access-Control-Allow-Methods": null,
@@ -59,135 +59,159 @@
       "test": "Invalid Endpoint Handling",
       "status": "PASS",
       "message": "404 returned for non-existent endpoint",
-      "timestamp": "2025-09-21T21:16:57.090246",
+      "timestamp": "2025-09-21T21:19:36.214701",
       "response_data": null
     },
     {
       "test": "Malformed Request Handling",
       "status": "PASS",
       "message": "Properly handled malformed JSON (HTTP 422)",
-      "timestamp": "2025-09-21T21:16:57.145037",
+      "timestamp": "2025-09-21T21:19:36.266396",
       "response_data": null
     },
     {
       "test": "Required Field Validation",
       "status": "PASS",
       "message": "Properly validates missing required fields",
-      "timestamp": "2025-09-21T21:16:57.222326",
+      "timestamp": "2025-09-21T21:19:36.320814",
       "response_data": null
     },
     {
       "test": "Data Persistence",
       "status": "PASS",
       "message": "Data persists correctly in database",
-      "timestamp": "2025-09-21T21:16:58.336827",
+      "timestamp": "2025-09-21T21:19:37.432517",
       "response_data": {
-        "id": "3eb4e9a8-c3a1-4290-8373-8d9fcbc93a85",
+        "id": "6c55dd14-3570-488e-a4a3-46bb889b0d6c",
         "client_name": "Persistence Test Client",
-        "timestamp": "2025-09-21T21:16:57.275000"
+        "timestamp": "2025-09-21T21:19:36.372000"
       }
     },
     {
-      "test": "Lead Scraping API",
-      "status": "FAIL",
-      "message": "HTTP 500: Internal Server Error",
-      "timestamp": "2025-09-21T21:17:00.977294",
+      "test": "Lead Scraping API - Timing",
+      "status": "PASS",
+      "message": "Realistic delay: 3.38s",
+      "timestamp": "2025-09-21T21:19:40.813165",
       "response_data": null
     },
     {
+      "test": "Lead Scraping API",
+      "status": "PASS",
+      "message": "Successfully scraped 5 leads with proper structure",
+      "timestamp": "2025-09-21T21:19:40.813235",
+      "response_data": {
+        "searchId": "4ecff6fd-bde9-4080-84a6-075395ef2c6e",
+        "count": 5
+      }
+    },
+    {
       "test": "Lead Scraping - Different City/State",
-      "status": "FAIL",
-      "message": "HTTP 500: Internal Server Error",
-      "timestamp": "2025-09-21T21:17:04.363906",
+      "status": "PASS",
+      "message": "Returned 10 leads (\u2264 10)",
+      "timestamp": "2025-09-21T21:19:44.545207",
       "response_data": null
     },
     {
       "test": "Lead Scraping - With Zip Code",
-      "status": "FAIL",
-      "message": "HTTP 500: Internal Server Error",
-      "timestamp": "2025-09-21T21:17:07.949966",
+      "status": "PASS",
+      "message": "Returned 2 leads (\u2264 5)",
+      "timestamp": "2025-09-21T21:19:47.838155",
       "response_data": null
     },
     {
       "test": "Lead Scraping - Max Results Limit",
-      "status": "FAIL",
-      "message": "HTTP 500: Internal Server Error",
-      "timestamp": "2025-09-21T21:17:10.150605",
+      "status": "PASS",
+      "message": "Returned 7 leads (\u2264 25)",
+      "timestamp": "2025-09-21T21:19:50.269290",
       "response_data": null
     },
     {
       "test": "Email Enrichment API",
-      "status": "SKIP",
-      "message": "No sample leads available for testing",
-      "timestamp": "2025-09-21T21:17:10.152345",
-      "response_data": null
+      "status": "PASS",
+      "message": "Successfully enriched email: owner@freshandgreen.com",
+      "timestamp": "2025-09-21T21:19:51.927880",
+      "response_data": {
+        "success": true,
+        "email": "owner@freshandgreen.com",
+        "message": "Email successfully enriched"
+      }
     },
     {
       "test": "Email Enrichment - Invalid Lead ID",
       "status": "PASS",
       "message": "Proper error handling (HTTP 404)",
-      "timestamp": "2025-09-21T21:17:10.225743",
+      "timestamp": "2025-09-21T21:19:51.983237",
       "response_data": null
     },
     {
       "test": "Email Enrichment - Missing Website",
       "status": "PASS",
       "message": "Proper error handling (HTTP 422)",
-      "timestamp": "2025-09-21T21:17:10.280707",
+      "timestamp": "2025-09-21T21:19:52.030901",
       "response_data": null
     },
     {
       "test": "Dashboard Stats API",
       "status": "PASS",
       "message": "Dashboard stats retrieved successfully",
-      "timestamp": "2025-09-21T21:17:10.340967",
+      "timestamp": "2025-09-21T21:19:52.088207",
       "response_data": {
-        "totalLeads": 29,
-        "totalSearches": 4,
+        "totalLeads": 68,
+        "totalSearches": 11,
         "avgConversion": 100.0,
-        "emailsEnriched": 0
+        "emailsEnriched": 1
       }
     },
     {
       "test": "Search Results API",
-      "status": "SKIP",
-      "message": "No search IDs available for testing",
-      "timestamp": "2025-09-21T21:17:10.342193",
-      "response_data": null
+      "status": "PASS",
+      "message": "Retrieved search with 5 leads",
+      "timestamp": "2025-09-21T21:19:52.141154",
+      "response_data": {
+        "searchId": "4ecff6fd-bde9-4080-84a6-075395ef2c6e",
+        "count": 5
+      }
     },
     {
       "test": "Search Results - Error Handling",
       "status": "PASS",
       "message": "Proper 404 for non-existent search",
-      "timestamp": "2025-09-21T21:17:10.398194",
+      "timestamp": "2025-09-21T21:19:52.192251",
       "response_data": null
     },
     {
       "test": "CSV Export API",
-      "status": "SKIP",
-      "message": "No search IDs available for testing",
-      "timestamp": "2025-09-21T21:17:10.399299",
+      "status": "PASS",
+      "message": "CSV export successful: 5 leads, filename: leads_restaurants_New York_20250921.csv",
+      "timestamp": "2025-09-21T21:19:52.250240",
       "response_data": null
     },
     {
       "test": "CSV Export - Error Handling",
       "status": "PASS",
       "message": "Proper 404 for non-existent search",
-      "timestamp": "2025-09-21T21:17:10.453968",
+      "timestamp": "2025-09-21T21:19:52.328154",
       "response_data": null
     },
     {
-      "test": "Database Integration",
-      "status": "SKIP",
-      "message": "No test data available",
-      "timestamp": "2025-09-21T21:17:10.454989",
+      "test": "Database Integration - UUID & Timestamps",
+      "status": "PASS",
+      "message": "Proper UUID generation and timestamp handling",
+      "timestamp": "2025-09-21T21:19:52.383095",
+      "response_data": null
+    },
+    {
+      "test": "Database Integration - Relationships",
+      "status": "PASS",
+      "message": "Proper lead-search relationships maintained",
+      "timestamp": "2025-09-21T21:19:52.383145",
       "response_data": null
     },
     {
       "test": "End-to-End Workflow",
-      "status": "FAIL",
-      "message": "Step 1 (Scrape) failed",
-      "timestamp": "2025-09-21T21:17:13.355986",
+      "status": "PASS",
+      "message": "Complete workflow successful: scrape \u2192 store \u2192 retrieve \u2192 enrich \u2192 export",
+      "timestamp": "2025-09-21T21:19:59.019327",
       "response_data": null
     }
   ]
