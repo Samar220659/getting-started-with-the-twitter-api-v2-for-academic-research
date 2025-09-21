@@ -5,6 +5,7 @@ import Homepage from "./components/Homepage";
 import Dashboard from "./components/Dashboard";
 import LeadScraper from "./components/LeadScraper";
 import Results from "./components/Results";
+import AutomationDashboard from "./components/AutomationDashboard";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/scraper" element={<LeadScraper />} />
           <Route path="/results" element={<Results />} />
+          <Route path="/automation" element={<AutomationDashboard />} />
         </Routes>
       </BrowserRouter>
     </div>
