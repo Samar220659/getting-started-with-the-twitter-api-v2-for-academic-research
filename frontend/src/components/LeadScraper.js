@@ -7,7 +7,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Badge } from "./ui/badge";
 import { Search, MapPin, Loader2, ArrowRight, Zap, Download } from "lucide-react";
-import { mockScrapeResults } from "../data/mockScrapeResults";
+import axios from "axios";
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
 
 const LeadScraper = () => {
   const [isLoading, setIsLoading] = useState(false);
