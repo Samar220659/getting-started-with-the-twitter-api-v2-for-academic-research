@@ -189,7 +189,7 @@ const Results = () => {
                   {searchData.query} in {searchData.city}, {searchData.state}
                 </Badge>
                 <span>•</span>
-                <span>{filteredResults.length} of {results.length} results</span>
+                <span>{filteredResults.length} von {results.length} Ergebnissen</span>
               </div>
             </div>
             <div className="flex gap-3">
