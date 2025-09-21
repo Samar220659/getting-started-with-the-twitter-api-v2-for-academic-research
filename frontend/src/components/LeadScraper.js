@@ -146,9 +146,11 @@ const LeadScraper = () => {
                       <Label htmlFor="zipCode">Zip Code (Optional)</Label>
                       <Input
                         id="zipCode"
+                        name="zipCode"
                         placeholder="10001"
                         value={searchData.zipCode}
                         onChange={(e) => handleInputChange('zipCode', e.target.value)}
+                        autoComplete="off"
                       />
                     </div>
                     <div className="space-y-2">
