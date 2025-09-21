@@ -42,15 +42,15 @@ const Results = () => {
       setFilteredResults(parsedResults);
       setSearchData(JSON.parse(savedSearch));
     } else {
-      // Fallback to demo data if no saved search
+      // Fallback zu Demo-Daten falls keine gespeicherte Suche vorhanden
       const demoResults = JSON.parse(localStorage.getItem('scrapeResults')) || mockScrapeResults;
-      const demoSearch = { query: "restaurants", city: "New York", state: "NY", zipCode: "10001", maxResults: 20 };
+      const demoSearch = { query: "restaurants", city: "München", state: "BY", zipCode: "80331", maxResults: 20 };
       
       setResults(demoResults);
       setFilteredResults(demoResults);
       setSearchData(demoSearch);
       
-      // Save demo data to localStorage for consistency
+      // Demo-Daten in localStorage speichern für Konsistenz
       localStorage.setItem('scrapeResults', JSON.stringify(demoResults));
       localStorage.setItem('lastSearch', JSON.stringify(demoSearch));
     }
