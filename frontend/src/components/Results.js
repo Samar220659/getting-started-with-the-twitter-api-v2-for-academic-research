@@ -143,10 +143,10 @@ const Results = () => {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <Search className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">No Results Found</h2>
-          <p className="text-gray-600 mb-4">Please run a search first</p>
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">Keine Ergebnisse gefunden</h2>
+          <p className="text-gray-600 mb-4">Bitte führen Sie zuerst eine Suche durch</p>
           <Button onClick={() => navigate('/scraper')}>
-            Go to Scraper
+            Zum Scraper gehen
           </Button>
         </div>
       </div>
