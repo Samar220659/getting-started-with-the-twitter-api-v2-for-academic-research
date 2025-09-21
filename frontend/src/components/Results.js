@@ -227,7 +227,7 @@ const Results = () => {
               <div className="text-2xl font-bold text-yellow-600">
                 {results.filter(r => r.rating >= 4).length}
               </div>
-              <div className="text-sm text-gray-600">4+ Stars</div>
+              <div className="text-sm text-gray-600">4+ Sterne</div>
             </Card>
           </div>
         </div>
