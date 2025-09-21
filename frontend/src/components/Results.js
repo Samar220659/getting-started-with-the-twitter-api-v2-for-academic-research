@@ -18,6 +18,7 @@ import {
   CheckCircle,
   ExternalLink
 } from "lucide-react";
+import { mockScrapeResults } from "../data/mockScrapeResults";
 
 const Results = () => {
   const [results, setResults] = useState([]);
