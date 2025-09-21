@@ -209,7 +209,7 @@ const Results = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <Card className="p-4">
               <div className="text-2xl font-bold text-blue-600">{results.length}</div>
-              <div className="text-sm text-gray-600">Total Leads</div>
+              <div className="text-sm text-gray-600">Gesamt-Leads</div>
             </Card>
             <Card className="p-4">
               <div className="text-2xl font-bold text-green-600">
