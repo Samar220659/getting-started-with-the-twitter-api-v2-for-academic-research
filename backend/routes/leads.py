@@ -68,7 +68,7 @@ async def enrich_email(request: EmailEnrichmentRequest):
     """
     try:
         # Get the lead from database
-        lead = await db.leads.find_one({"id": request.leadId})
+        lead = await db.leads.find_one({"id": request.leadId}, {"_id": 0})
         if not lead:
             raise HTTPException(status_code=404, detail="Lead not found")
         
