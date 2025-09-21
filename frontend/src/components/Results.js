@@ -196,7 +196,7 @@ const Results = () => {
               <div className="relative">
                 <Filter className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <Input
-                  placeholder="Filter results..."
+                  placeholder="Ergebnisse filtern..."
                   value={filterText}
                   onChange={(e) => setFilterText(e.target.value)}
                   className="pl-10 w-64"
