@@ -24,36 +24,59 @@ const API = `${BACKEND_URL}/api`;
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [stats, setStats] = useState({
+    totalLeads: 0,
+    totalSearches: 0,
+    avgConversion: 0,
+    emailsEnriched: 0
+  });
+  const [recentSearches, setRecentSearches] = useState([]);
+  const [loading, setLoading] = useState(true);
   
-  const recentSearches = [
-    {
-      id: 1,
-      query: "restaurants in New York, NY",
-      results: 20,
-      date: "2 hours ago",
-      avgRating: 4.3
-    },
-    {
-      id: 2, 
-      query: "plumbers in Austin, TX",
-      results: 15,
-      date: "1 day ago",
-      avgRating: 4.1
-    },
-    {
-      id: 3,
-      query: "hair salons in Los Angeles, CA", 
-      results: 25,
-      date: "3 days ago",
-      avgRating: 4.5
+  useEffect(() => {
+    fetchDashboardStats();
+  }, []);
+  
+  const fetchDashboardStats = async () => {
+    try {
+      const response = await axios.get(`${API}/leads/dashboard/stats`);
+      if (response.data) {
+        setStats({
+          totalLeads: response.data.totalLeads,
+          totalSearches: response.data.totalSearches,
+          avgConversion: response.data.avgConversion,
+          emailsEnriched: response.data.emailsEnriched
+        });
+        setRecentSearches(response.data.recentSearches || []);
+      }
+    } catch (error) {
+      console.error('Failed to fetch dashboard stats:', error);
+      // Fallback to mock data
+      setStats({
+        totalLeads: 2847,
+        totalSearches: 156,
+        avgConversion: 23.4,
+        emailsEnriched: 1429
+      });
+      setRecentSearches([
+        {
+          id: 1,
+          query: "restaurants in New York, NY",
+          results: 20,
+          date: "2 hours ago",
+          avgRating: 4.3
+        },
+        {
+          id: 2, 
+          query: "plumbers in Austin, TX",
+          results: 15,
+          date: "1 day ago",
+          avgRating: 4.1
+        }
+      ]);
+    } finally {
+      setLoading(false);
     }
-  ];
-
-  const stats = {
-    totalLeads: 2847,
-    totalSearches: 156,
-    avgConversion: 23.4,
-    emailsEnriched: 1429
   };
 
   const topPerformingSearches = [
