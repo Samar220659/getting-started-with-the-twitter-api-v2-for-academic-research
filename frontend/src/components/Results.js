@@ -347,11 +347,11 @@ const Results = () => {
                 <table className="w-full">
                   <thead className="bg-gray-50 border-b">
                     <tr>
-                      <th className="text-left p-4 font-medium text-gray-900">Business</th>
-                      <th className="text-left p-4 font-medium text-gray-900">Contact</th>
-                      <th className="text-left p-4 font-medium text-gray-900">Location</th>
-                      <th className="text-left p-4 font-medium text-gray-900">Rating</th>
-                      <th className="text-left p-4 font-medium text-gray-900">Actions</th>
+                      <th className="text-left p-4 font-medium text-gray-900">Unternehmen</th>
+                      <th className="text-left p-4 font-medium text-gray-900">Kontakt</th>
+                      <th className="text-left p-4 font-medium text-gray-900">Standort</th>
+                      <th className="text-left p-4 font-medium text-gray-900">Bewertung</th>
+                      <th className="text-left p-4 font-medium text-gray-900">Aktionen</th>
                     </tr>
                   </thead>
                   <tbody>
