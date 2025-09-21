@@ -31,6 +31,7 @@ const AutomationDashboard = () => {
   const [recentTasks, setRecentTasks] = useState([]);
   const [statistics, setStatistics] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchDashboardData();
