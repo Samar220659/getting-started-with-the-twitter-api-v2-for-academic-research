@@ -718,29 +718,39 @@ class BackendTester:
         }
             
     def run_all_tests(self):
-        """Run all backend tests"""
+        """Run all backend tests including basic API and LeadMaps functionality"""
         print(f"\n{'='*60}")
         print("LEADMAPS BACKEND API TESTING")
         print(f"Testing API at: {API_BASE_URL}")
         print(f"{'='*60}\n")
         
-        # Core API functionality tests
+        # Basic API functionality tests (existing)
+        print("🔧 Testing Basic API Functionality...")
         self.test_root_endpoint()
         self.test_create_status_check()
         self.test_get_status_checks()
         
-        # Configuration and error handling tests
+        # Configuration and error handling tests (existing)
+        print("\n⚙️ Testing Configuration & Error Handling...")
         self.test_cors_headers()
         self.test_invalid_endpoints()
         self.test_malformed_requests()
         self.test_missing_required_fields()
         
-        # Data persistence test
+        # Data persistence test (existing)
+        print("\n🗄️ Testing Basic Data Persistence...")
         self.test_data_persistence()
         
-        # Print summary
+        # LeadMaps-specific tests (new)
         print(f"\n{'='*60}")
-        print("TEST SUMMARY")
+        print("LEADMAPS LEAD SCRAPING SYSTEM TESTING")
+        print(f"{'='*60}")
+        
+        leadmaps_summary = self.run_leadmaps_tests()
+        
+        # Print comprehensive summary
+        print(f"\n{'='*60}")
+        print("COMPREHENSIVE TEST SUMMARY")
         print(f"{'='*60}")
         print(f"Total Tests: {self.total_tests}")
         print(f"Passed: {self.passed_tests}")
@@ -762,6 +772,47 @@ class BackendTester:
             "success_rate": (self.passed_tests/self.total_tests)*100,
             "results": self.test_results
         }
+    
+    def test_data_persistence(self):
+        """Test that data persists in MongoDB"""
+        try:
+            # Create a status check
+            test_data = {"client_name": "Persistence Test Client"}
+            create_response = requests.post(
+                f"{API_BASE_URL}/status",
+                json=test_data,
+                headers={"Content-Type": "application/json"},
+                timeout=10
+            )
+            
+            if create_response.status_code == 200:
+                created_id = create_response.json().get("id")
+                
+                # Wait a moment then retrieve all status checks
+                time.sleep(1)
+                get_response = requests.get(f"{API_BASE_URL}/status", timeout=10)
+                
+                if get_response.status_code == 200:
+                    all_checks = get_response.json()
+                    
+                    # Check if our created item exists
+                    found_item = None
+                    for check in all_checks:
+                        if check.get("id") == created_id:
+                            found_item = check
+                            break
+                            
+                    if found_item:
+                        self.log_test("Data Persistence", "PASS", "Data persists correctly in database", found_item)
+                    else:
+                        self.log_test("Data Persistence", "FAIL", "Created item not found in database")
+                else:
+                    self.log_test("Data Persistence", "FAIL", f"Failed to retrieve data: HTTP {get_response.status_code}")
+            else:
+                self.log_test("Data Persistence", "FAIL", f"Failed to create test data: HTTP {create_response.status_code}")
+                
+        except requests.exceptions.RequestException as e:
+            self.log_test("Data Persistence", "FAIL", f"Request failed: {str(e)}")
 
 if __name__ == "__main__":
     tester = BackendTester()
