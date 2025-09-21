@@ -37,7 +37,17 @@ const Results = () => {
       setFilteredResults(parsedResults);
       setSearchData(JSON.parse(savedSearch));
     } else {
-      navigate('/scraper');
+      // Fallback to demo data if no saved search
+      const demoResults = JSON.parse(localStorage.getItem('scrapeResults')) || mockScrapeResults;
+      const demoSearch = { query: "restaurants", city: "New York", state: "NY", zipCode: "10001", maxResults: 20 };
+      
+      setResults(demoResults);
+      setFilteredResults(demoResults);
+      setSearchData(demoSearch);
+      
+      // Save demo data to localStorage for consistency
+      localStorage.setItem('scrapeResults', JSON.stringify(demoResults));
+      localStorage.setItem('lastSearch', JSON.stringify(demoSearch));
     }
   }, [navigate]);
 
