@@ -1,0 +1,91 @@
+{
+  "total": 9,
+  "passed": 8,
+  "failed": 1,
+  "success_rate": 88.88888888888889,
+  "results": [
+    {
+      "test": "Root Endpoint",
+      "status": "PASS",
+      "message": "Root endpoint returns correct message",
+      "timestamp": "2025-09-21T20:55:15.182429",
+      "response_data": {
+        "message": "Hello World"
+      }
+    },
+    {
+      "test": "Create Status Check",
+      "status": "PASS",
+      "message": "Status check created successfully",
+      "timestamp": "2025-09-21T20:55:15.268386",
+      "response_data": {
+        "id": "2d33e3f4-4847-46b8-a5ba-69e01fc6b074",
+        "client_name": "LeadMaps Test Client",
+        "timestamp": "2025-09-21T20:55:15.241115"
+      }
+    },
+    {
+      "test": "Get Status Checks",
+      "status": "PASS",
+      "message": "Retrieved 1 status checks",
+      "timestamp": "2025-09-21T20:55:15.327945",
+      "response_data": {
+        "count": 1
+      }
+    },
+    {
+      "test": "Status Check Structure",
+      "status": "PASS",
+      "message": "Status check structure is valid",
+      "timestamp": "2025-09-21T20:55:15.327979",
+      "response_data": {
+        "id": "2d33e3f4-4847-46b8-a5ba-69e01fc6b074",
+        "client_name": "LeadMaps Test Client",
+        "timestamp": "2025-09-21T20:55:15.241000"
+      }
+    },
+    {
+      "test": "CORS Configuration",
+      "status": "FAIL",
+      "message": "CORS headers missing",
+      "timestamp": "2025-09-21T20:55:15.381930",
+      "response_data": {
+        "Access-Control-Allow-Origin": null,
+        "Access-Control-Allow-Methods": null,
+        "Access-Control-Allow-Headers": null
+      }
+    },
+    {
+      "test": "Invalid Endpoint Handling",
+      "status": "PASS",
+      "message": "404 returned for non-existent endpoint",
+      "timestamp": "2025-09-21T20:55:15.436662",
+      "response_data": null
+    },
+    {
+      "test": "Malformed Request Handling",
+      "status": "PASS",
+      "message": "Properly handled malformed JSON (HTTP 422)",
+      "timestamp": "2025-09-21T20:55:15.491152",
+      "response_data": null
+    },
+    {
+      "test": "Required Field Validation",
+      "status": "PASS",
+      "message": "Properly validates missing required fields",
+      "timestamp": "2025-09-21T20:55:15.543063",
+      "response_data": null
+    },
+    {
+      "test": "Data Persistence",
+      "status": "PASS",
+      "message": "Data persists correctly in database",
+      "timestamp": "2025-09-21T20:55:16.673006",
+      "response_data": {
+        "id": "75a7cfc8-8385-40a3-aa80-174b5b2b0b99",
+        "client_name": "Persistence Test Client",
+        "timestamp": "2025-09-21T20:55:15.614000"
+      }
+    }
+  ]
+}
