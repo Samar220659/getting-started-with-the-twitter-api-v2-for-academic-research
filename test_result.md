@@ -258,10 +258,11 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Basic API Endpoints"
-    - "CORS Configuration"
-    - "Data Validation and Error Handling"
-    - "MongoDB Integration"
+    - "Homepage Navigation and UI"
+    - "Lead Scraper Form and Workflow"
+    - "Results Page Functionality"
+    - "Dashboard Analytics and Navigation"
+    - "Cross-Page Navigation and State Management"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
@@ -269,3 +270,5 @@ test_plan:
 agent_communication:
     - agent: "testing"
       message: "Backend testing completed successfully. Core API functionality is working well with 88.9% test success rate (8/9 tests passed). Only minor CORS preflight issue found which doesn't affect actual functionality. The main gap is that lead scraping, email enrichment, and dashboard APIs are not implemented - frontend currently uses mock data. All existing endpoints have proper validation, error handling, and MongoDB persistence."
+    - agent: "testing"
+      message: "Starting comprehensive frontend testing of LeadMaps system. Will test complete user journey including homepage navigation, lead scraper workflow, results page functionality, dashboard analytics, and cross-page navigation. Testing both desktop and mobile viewports as requested."
