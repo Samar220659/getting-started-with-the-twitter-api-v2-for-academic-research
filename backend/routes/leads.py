@@ -187,11 +187,11 @@ async def export_search_results(search_id: str):
     """
     try:
         # Get search and leads
-        search = await db.searches.find_one({"id": search_id})
+        search = await db.searches.find_one({"id": search_id}, {"_id": 0})
         if not search:
             raise HTTPException(status_code=404, detail="Search not found")
             
-        leads_cursor = db.leads.find({"searchId": search_id})
+        leads_cursor = db.leads.find({"searchId": search_id}, {"_id": 0})
         leads = await leads_cursor.to_list(1000)
         
         if not leads:
