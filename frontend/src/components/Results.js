@@ -311,7 +311,7 @@ const Results = () => {
                               <RefreshCw className="w-3 h-3 animate-spin" />
                               <span className="text-gray-500">E-Mail wird gesucht...</span>
                             </div>
-                          ) : enrichedEmails[index] && enrichedEmails[index] !== 'loading' ? (
+                          ) : enrichedEmails[index] && enrichedEmails[index] !== 'loading' && enrichedEmails[index] !== 'not_found' && enrichedEmails[index] !== 'error' ? (
                             <div className="flex items-center gap-2">
                               <CheckCircle className="w-3 h-3 text-green-500" />
                               <a 
