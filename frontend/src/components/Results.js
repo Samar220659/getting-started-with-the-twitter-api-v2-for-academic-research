@@ -87,7 +87,7 @@ const Results = () => {
         const enrichedEmail = response.data.email;
         setEnrichedEmails(prev => ({ ...prev, [index]: enrichedEmail }));
         
-        // Update the result with enriched email
+        // Ergebnis mit angereicherter E-Mail aktualisieren
         setResults(prev => prev.map((result, i) => 
           i === index ? { ...result, email: enrichedEmail } : result
         ));
