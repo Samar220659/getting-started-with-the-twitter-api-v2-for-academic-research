@@ -31,14 +31,26 @@ const LeadScraper = () => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate API call delay
-    setTimeout(() => {
-      // Store search data and navigate to results
-      localStorage.setItem('lastSearch', JSON.stringify(searchData));
-      localStorage.setItem('scrapeResults', JSON.stringify(mockScrapeResults));
+    try {
+      // Make API call to backend
+      const response = await axios.post(`${API}/leads/scrape`, searchData);
+      
+      if (response.data && response.data.results) {
+        // Store search data and results
+        localStorage.setItem('lastSearch', JSON.stringify(searchData));
+        localStorage.setItem('scrapeResults', JSON.stringify(response.data.results));
+        
+        // Navigate to results
+        navigate('/results');
+      } else {
+        alert('No results found. Please try a different search.');
+      }
+    } catch (error) {
+      console.error('Scraping error:', error);
+      alert('Search failed. Please try again or contact support.');
+    } finally {
       setIsLoading(false);
-      navigate('/results');
-    }, 3000);
+    }
   };
 
   const exampleSearches = [
