@@ -5,7 +5,7 @@ from datetime import datetime
 
 from models.leads import SearchRequest, LeadResult, SearchRecord, EmailEnrichmentRequest, DashboardStats
 from services.lead_scraper import MockLeadScraperService, MockEmailEnrichmentService
-from server import db
+from database import db
 
 router = APIRouter(prefix="/api/leads", tags=["leads"])
 
