@@ -205,24 +205,15 @@ async def get_performance_metrics():
 
 @router.post("/workflows/{workflow_name}/trigger")
 async def trigger_workflow_manually(workflow_name: str, params: Dict[str, Any] = None):
-    """Workflow manuell auslösen"""
+    """Workflow manuell auslösen (vereinfacht ohne Celery)"""
     try:
-        from celery_app import celery_app
-        
         # Verfügbare Workflows prüfen
-        available_workflows = {
-            'google_maps_scraper': 'tasks.google_maps_scraper.scrape_google_maps_leads',
-            'linkedin_extractor': 'tasks.linkedin_extractor.extract_linkedin_profiles',
-            'ecommerce_intelligence': 'tasks.ecommerce_intelligence.analyze_ecommerce_data',
-            'social_media_harvester': 'tasks.social_media_harvester.harvest_social_media_data',
-            'real_estate_analyzer': 'tasks.real_estate_analyzer.analyze_real_estate_market',
-            'job_market_intelligence': 'tasks.job_market_intelligence.analyze_job_market',
-            'restaurant_analyzer': 'tasks.restaurant_analyzer.analyze_restaurant_data',
-            'finance_data_collector': 'tasks.finance_data_collector.collect_finance_data',
-            'event_scout': 'tasks.event_scout.scout_events',
-            'vehicle_market_intel': 'tasks.vehicle_market_intel.analyze_vehicle_market',
-            'seo_opportunity_finder': 'tasks.seo_opportunity_finder.find_seo_opportunities'
-        }
+        available_workflows = [
+            'google_maps_scraper', 'linkedin_extractor', 'ecommerce_intelligence',
+            'social_media_harvester', 'real_estate_analyzer', 'job_market_intelligence',
+            'restaurant_analyzer', 'finance_data_collector', 'event_scout',
+            'vehicle_market_intel', 'seo_opportunity_finder'
+        ]
         
         if workflow_name not in available_workflows:
             raise HTTPException(status_code=404, detail=f"Workflow '{workflow_name}' nicht gefunden")
@@ -231,22 +222,31 @@ async def trigger_workflow_manually(workflow_name: str, params: Dict[str, Any] =
         if not params:
             params = {'max_results': 20, 'triggered_manually': True}
         
-        # Task starten
-        task_name = available_workflows[workflow_name]
-        result = celery_app.send_task(task_name, args=[params])
+        # Task-Record erstellen (ohne Celery)
+        task_record = {
+            'id': str(uuid.uuid4()),
+            'workflow_type': workflow_name,
+            'status': 'scheduled',
+            'parameters': params,
+            'started_at': datetime.utcnow(),
+            'triggered_manually': True
+        }
+        
+        await db.automation_tasks.insert_one(task_record)
         
         return {
             'success': True,
             'workflow_name': workflow_name,
-            'task_id': result.id,
-            'message': f"Workflow '{workflow_name}' manuell gestartet",
-            'parameters': params
+            'task_id': task_record['id'],
+            'message': f"Workflow '{workflow_name}' wurde zur Ausführung geplant",
+            'parameters': params,
+            'note': 'Task wird vom Simple Scheduler in der nächsten Ausführung verarbeitet'
         }
         
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Fehler beim Starten des Workflows: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Fehler beim Planen des Workflows: {str(e)}")
 
 @router.get("/tasks/recent")
 async def get_recent_tasks(limit: int = 50):
