@@ -1,91 +1,162 @@
 {
-  "total": 9,
-  "passed": 8,
-  "failed": 1,
-  "success_rate": 88.88888888888889,
+  "total": 22,
+  "passed": 0,
+  "failed": 22,
+  "success_rate": 0.0,
   "results": [
     {
       "test": "Root Endpoint",
-      "status": "PASS",
-      "message": "Root endpoint returns correct message",
-      "timestamp": "2025-09-21T20:55:15.182429",
-      "response_data": {
-        "message": "Hello World"
-      }
+      "status": "FAIL",
+      "message": "Request failed: HTTPSConnectionPool(host='workflow-automation-5.preview.emergentagent.com', port=443): Read timed out. (read timeout=10)",
+      "timestamp": "2025-09-21T21:15:07.128787",
+      "response_data": null
     },
     {
       "test": "Create Status Check",
-      "status": "PASS",
-      "message": "Status check created successfully",
-      "timestamp": "2025-09-21T20:55:15.268386",
-      "response_data": {
-        "id": "2d33e3f4-4847-46b8-a5ba-69e01fc6b074",
-        "client_name": "LeadMaps Test Client",
-        "timestamp": "2025-09-21T20:55:15.241115"
-      }
+      "status": "FAIL",
+      "message": "Request failed: HTTPSConnectionPool(host='workflow-automation-5.preview.emergentagent.com', port=443): Read timed out. (read timeout=10)",
+      "timestamp": "2025-09-21T21:15:17.203674",
+      "response_data": null
     },
     {
       "test": "Get Status Checks",
-      "status": "PASS",
-      "message": "Retrieved 1 status checks",
-      "timestamp": "2025-09-21T20:55:15.327945",
-      "response_data": {
-        "count": 1
-      }
-    },
-    {
-      "test": "Status Check Structure",
-      "status": "PASS",
-      "message": "Status check structure is valid",
-      "timestamp": "2025-09-21T20:55:15.327979",
-      "response_data": {
-        "id": "2d33e3f4-4847-46b8-a5ba-69e01fc6b074",
-        "client_name": "LeadMaps Test Client",
-        "timestamp": "2025-09-21T20:55:15.241000"
-      }
+      "status": "FAIL",
+      "message": "Request failed: HTTPSConnectionPool(host='workflow-automation-5.preview.emergentagent.com', port=443): Read timed out. (read timeout=10)",
+      "timestamp": "2025-09-21T21:15:27.284045",
+      "response_data": null
     },
     {
       "test": "CORS Configuration",
       "status": "FAIL",
-      "message": "CORS headers missing",
-      "timestamp": "2025-09-21T20:55:15.381930",
-      "response_data": {
-        "Access-Control-Allow-Origin": null,
-        "Access-Control-Allow-Methods": null,
-        "Access-Control-Allow-Headers": null
-      }
+      "message": "Request failed: HTTPSConnectionPool(host='workflow-automation-5.preview.emergentagent.com', port=443): Read timed out. (read timeout=10)",
+      "timestamp": "2025-09-21T21:15:37.359944",
+      "response_data": null
     },
     {
       "test": "Invalid Endpoint Handling",
-      "status": "PASS",
-      "message": "404 returned for non-existent endpoint",
-      "timestamp": "2025-09-21T20:55:15.436662",
+      "status": "FAIL",
+      "message": "Expected 404, got 502",
+      "timestamp": "2025-09-21T21:15:42.711709",
       "response_data": null
     },
     {
       "test": "Malformed Request Handling",
-      "status": "PASS",
-      "message": "Properly handled malformed JSON (HTTP 422)",
-      "timestamp": "2025-09-21T20:55:15.491152",
+      "status": "FAIL",
+      "message": "Unexpected status code: 502",
+      "timestamp": "2025-09-21T21:15:42.842321",
       "response_data": null
     },
     {
       "test": "Required Field Validation",
-      "status": "PASS",
-      "message": "Properly validates missing required fields",
-      "timestamp": "2025-09-21T20:55:15.543063",
+      "status": "FAIL",
+      "message": "Expected 422, got 502",
+      "timestamp": "2025-09-21T21:15:42.918411",
       "response_data": null
     },
     {
       "test": "Data Persistence",
-      "status": "PASS",
-      "message": "Data persists correctly in database",
-      "timestamp": "2025-09-21T20:55:16.673006",
-      "response_data": {
-        "id": "75a7cfc8-8385-40a3-aa80-174b5b2b0b99",
-        "client_name": "Persistence Test Client",
-        "timestamp": "2025-09-21T20:55:15.614000"
-      }
+      "status": "FAIL",
+      "message": "Failed to create test data: HTTP 502",
+      "timestamp": "2025-09-21T21:15:43.009134",
+      "response_data": null
+    },
+    {
+      "test": "Lead Scraping API",
+      "status": "FAIL",
+      "message": "HTTP 502: ",
+      "timestamp": "2025-09-21T21:15:43.101584",
+      "response_data": null
+    },
+    {
+      "test": "Lead Scraping - Different City/State",
+      "status": "FAIL",
+      "message": "HTTP 502: ",
+      "timestamp": "2025-09-21T21:15:43.204820",
+      "response_data": null
+    },
+    {
+      "test": "Lead Scraping - With Zip Code",
+      "status": "FAIL",
+      "message": "HTTP 502: ",
+      "timestamp": "2025-09-21T21:15:43.285315",
+      "response_data": null
+    },
+    {
+      "test": "Lead Scraping - Max Results Limit",
+      "status": "FAIL",
+      "message": "HTTP 502: ",
+      "timestamp": "2025-09-21T21:15:43.350468",
+      "response_data": null
+    },
+    {
+      "test": "Email Enrichment API",
+      "status": "SKIP",
+      "message": "No sample leads available for testing",
+      "timestamp": "2025-09-21T21:15:43.352117",
+      "response_data": null
+    },
+    {
+      "test": "Email Enrichment - Invalid Lead ID",
+      "status": "FAIL",
+      "message": "Expected HTTP 404, got 502",
+      "timestamp": "2025-09-21T21:15:43.441564",
+      "response_data": null
+    },
+    {
+      "test": "Email Enrichment - Missing Website",
+      "status": "FAIL",
+      "message": "Expected HTTP 422, got 502",
+      "timestamp": "2025-09-21T21:15:43.533132",
+      "response_data": null
+    },
+    {
+      "test": "Dashboard Stats API",
+      "status": "FAIL",
+      "message": "HTTP 502: ",
+      "timestamp": "2025-09-21T21:15:43.610853",
+      "response_data": null
+    },
+    {
+      "test": "Search Results API",
+      "status": "SKIP",
+      "message": "No search IDs available for testing",
+      "timestamp": "2025-09-21T21:15:43.612053",
+      "response_data": null
+    },
+    {
+      "test": "Search Results - Error Handling",
+      "status": "FAIL",
+      "message": "Expected 404, got 502",
+      "timestamp": "2025-09-21T21:15:43.703120",
+      "response_data": null
+    },
+    {
+      "test": "CSV Export API",
+      "status": "SKIP",
+      "message": "No search IDs available for testing",
+      "timestamp": "2025-09-21T21:15:43.704524",
+      "response_data": null
+    },
+    {
+      "test": "CSV Export - Error Handling",
+      "status": "FAIL",
+      "message": "Expected 404, got 502",
+      "timestamp": "2025-09-21T21:15:43.796739",
+      "response_data": null
+    },
+    {
+      "test": "Database Integration",
+      "status": "SKIP",
+      "message": "No test data available",
+      "timestamp": "2025-09-21T21:15:43.797867",
+      "response_data": null
+    },
+    {
+      "test": "End-to-End Workflow",
+      "status": "FAIL",
+      "message": "Step 1 (Scrape) failed",
+      "timestamp": "2025-09-21T21:15:43.859439",
+      "response_data": null
     }
   ]
 }
