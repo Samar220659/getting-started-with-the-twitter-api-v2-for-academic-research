@@ -215,7 +215,7 @@ const Results = () => {
               <div className="text-2xl font-bold text-green-600">
                 {results.filter(r => r.phone).length}
               </div>
-              <div className="text-sm text-gray-600">With Phone</div>
+              <div className="text-sm text-gray-600">Mit Telefon</div>
             </Card>
             <Card className="p-4">
               <div className="text-2xl font-bold text-purple-600">
