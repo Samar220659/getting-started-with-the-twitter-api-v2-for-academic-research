@@ -326,10 +326,10 @@ const Results = () => {
                               size="sm"
                               variant="outline"
                               onClick={() => handleEnrichEmail(index, result.website)}
-                              disabled={!result.website}
+                              disabled={!result.website || enrichedEmails[index] === 'not_found'}
                               className="text-xs"
                             >
-                              Find Email
+                              {enrichedEmails[index] === 'not_found' ? 'Nicht gefunden' : 'E-Mail finden'}
                             </Button>
                           )}
                         </div>
