@@ -101,11 +101,13 @@ const LeadScraper = () => {
                     </Label>
                     <Input
                       id="query"
+                      name="query"
                       placeholder="e.g., restaurants, plumbers, gyms, hair salons"
                       value={searchData.query}
                       onChange={(e) => handleInputChange('query', e.target.value)}
                       required
                       className="text-lg"
+                      autoComplete="off"
                     />
                     <p className="text-sm text-gray-500">
                       Be specific for better results (e.g., "Italian restaurants" vs "restaurants")
