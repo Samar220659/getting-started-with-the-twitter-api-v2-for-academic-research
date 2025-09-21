@@ -234,8 +234,8 @@ const Results = () => {
 
         <Tabs defaultValue="grid" className="w-full">
           <TabsList className="grid w-full grid-cols-2 max-w-md">
-            <TabsTrigger value="grid">Grid View</TabsTrigger>
-            <TabsTrigger value="table">Table View</TabsTrigger>
+            <TabsTrigger value="grid">Rasteransicht</TabsTrigger>
+            <TabsTrigger value="table">Tabellenansicht</TabsTrigger>
           </TabsList>
           
           <TabsContent value="grid" className="space-y-6">
