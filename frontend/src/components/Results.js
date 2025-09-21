@@ -95,7 +95,7 @@ const Results = () => {
         setEnrichedEmails(prev => ({ ...prev, [index]: 'not_found' }));
       }
     } catch (error) {
-      console.error('Email enrichment error:', error);
+      console.error('E-Mail-Anreicherungsfehler:', error);
       setEnrichedEmails(prev => ({ ...prev, [index]: 'error' }));
     }
   };
