@@ -166,11 +166,11 @@ const Results = () => {
           </Link>
           <nav className="flex gap-4">
             <Button variant="outline" onClick={() => navigate('/scraper')}>
-              New Search
+              Neue Suche
             </Button>
             <Button onClick={exportToCSV} className="bg-green-600 hover:bg-green-700">
               <Download className="w-4 h-4 mr-2" />
-              Export CSV
+              CSV exportieren
             </Button>
           </nav>
         </div>
