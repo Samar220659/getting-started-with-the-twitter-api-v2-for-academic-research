@@ -119,10 +119,12 @@ const LeadScraper = () => {
                       <Label htmlFor="city">City *</Label>
                       <Input
                         id="city"
+                        name="city"
                         placeholder="New York"
                         value={searchData.city}
                         onChange={(e) => handleInputChange('city', e.target.value)}
                         required
+                        autoComplete="off"
                       />
                     </div>
                     <div className="space-y-2">
