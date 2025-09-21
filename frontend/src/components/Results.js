@@ -102,15 +102,15 @@ const Results = () => {
 
   const exportToCSV = () => {
     const headers = [
-      'Business Name',
-      'Type', 
-      'Address',
-      'Phone',
+      'Firmenname',
+      'Typ', 
+      'Adresse',
+      'Telefon',
       'Website',
-      'Email',
-      'Rating',
-      'Reviews',
-      'Search Query'
+      'E-Mail',
+      'Bewertung',
+      'Rezensionen',
+      'Suchbegriff'
     ];
     
     const csvData = filteredResults.map(result => [
