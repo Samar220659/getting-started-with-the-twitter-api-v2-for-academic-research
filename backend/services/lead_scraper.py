@@ -2,7 +2,7 @@ import asyncio
 import random
 from typing import List, Dict, Any
 from datetime import datetime
-from ..models.leads import LeadResult, SearchRecord
+from models.leads import LeadResult, SearchRecord
 
 class MockLeadScraperService:
     """Mock service that simulates Google Maps scraping using Apify"""
