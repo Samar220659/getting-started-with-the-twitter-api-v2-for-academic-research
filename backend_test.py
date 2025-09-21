@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Backend API Testing for LeadMaps Application
-Tests the existing FastAPI endpoints and MongoDB integration
+Tests the complete integrated LeadMaps system with new backend API endpoints
 """
 
 import requests
@@ -20,6 +20,11 @@ class BackendTester:
         self.total_tests = 0
         self.passed_tests = 0
         self.failed_tests = 0
+        self.test_data = {
+            'search_ids': [],
+            'lead_ids': [],
+            'sample_leads': []
+        }
         
     def log_test(self, test_name, status, message, response_data=None):
         """Log test results"""
