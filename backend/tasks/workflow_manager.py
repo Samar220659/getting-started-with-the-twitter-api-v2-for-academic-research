@@ -150,10 +150,11 @@ def auto_workflow_optimizer(self):
         # Performance-Metriken sammeln
         from database import db
         
-        # Letzte 24 Stunden analysieren
-        recent_tasks = await db.automation_tasks.find({
+        # Letzte 24 Stunden analysieren  
+        recent_tasks_cursor = db.automation_tasks.find({
             'started_at': {'$gte': datetime.utcnow().replace(hour=0, minute=0, second=0)}
-        }).to_list(1000)
+        })
+        recent_tasks = loop.run_until_complete(recent_tasks_cursor.to_list(1000))
         
         # Performance-Statistiken
         stats = {}
