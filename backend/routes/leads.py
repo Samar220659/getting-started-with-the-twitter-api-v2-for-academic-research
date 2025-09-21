@@ -51,11 +51,18 @@ async def scrape_google_maps(search_request: SearchRequest, background_tasks: Ba
             {"$set": {"results_count": len(leads_data)}}
         )
         
+        # Return clean data without MongoDB ObjectIds
+        clean_results = []
+        for lead_dict in leads_data:
+            # Remove any _id field that might have been added
+            clean_dict = {k: v for k, v in lead_dict.items() if k != '_id'}
+            clean_results.append(clean_dict)
+        
         return {
             "searchId": search_id,
-            "results": leads_data,
-            "count": len(leads_data),
-            "message": f"Successfully scraped {len(leads_data)} leads for '{search_request.query}' in {search_request.city}, {search_request.state}"
+            "results": clean_results,
+            "count": len(clean_results),
+            "message": f"Successfully scraped {len(clean_results)} leads for '{search_request.query}' in {search_request.city}, {search_request.state}"
         }
         
     except Exception as e:
