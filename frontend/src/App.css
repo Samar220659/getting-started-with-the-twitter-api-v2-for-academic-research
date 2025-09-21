@@ -32,3 +32,32 @@
         transform: rotate(360deg);
     }
 }
+
+/* Custom handwritten style for logo and guide titles */
+.handwritten-style {
+    font-family: 'Kalam', 'Comic Sans MS', cursive;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Custom styles for the clone */
+.App {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+/* Ensure proper text alignment */
+.text-left {
+    text-align: left;
+}
+
+/* Smooth transitions for interactive elements */
+a, button {
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+/* Custom highlight style */
+.highlight-yellow {
+    background: linear-gradient(120deg, #fef08a 0%, #facc15 100%);
+    padding: 2px 4px;
+    border-radius: 2px;
+}
