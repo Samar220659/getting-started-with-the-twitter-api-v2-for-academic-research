@@ -72,25 +72,32 @@ const Results = () => {
   const handleEnrichEmail = async (index, website) => {
     if (!website) return;
     
+    const result = results[index];
+    if (!result || !result.id) return;
+    
     setEnrichedEmails(prev => ({ ...prev, [index]: 'loading' }));
     
-    // Simulate email enrichment
-    setTimeout(() => {
-      const mockEmails = [
-        'contact@business.com',
-        'info@company.com', 
-        'hello@shop.com',
-        'owner@store.com'
-      ];
-      const randomEmail = mockEmails[Math.floor(Math.random() * mockEmails.length)];
+    try {
+      const response = await axios.post(`${API}/leads/enrich-email`, {
+        leadId: result.id,
+        website: website
+      });
       
-      setEnrichedEmails(prev => ({ ...prev, [index]: randomEmail }));
-      
-      // Update the result with enriched email
-      setResults(prev => prev.map((result, i) => 
-        i === index ? { ...result, email: randomEmail } : result
-      ));
-    }, 2000);
+      if (response.data.success && response.data.email) {
+        const enrichedEmail = response.data.email;
+        setEnrichedEmails(prev => ({ ...prev, [index]: enrichedEmail }));
+        
+        // Update the result with enriched email
+        setResults(prev => prev.map((result, i) => 
+          i === index ? { ...result, email: enrichedEmail } : result
+        ));
+      } else {
+        setEnrichedEmails(prev => ({ ...prev, [index]: 'not_found' }));
+      }
+    } catch (error) {
+      console.error('Email enrichment error:', error);
+      setEnrichedEmails(prev => ({ ...prev, [index]: 'error' }));
+    }
   };
 
   const exportToCSV = () => {
